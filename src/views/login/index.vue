@@ -1,6 +1,4 @@
 <template>
-  <!-- <el-row justify="center"> -->
-    <!-- <el-col> -->
       <div class="login-container">
         <el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginFromRef">
           <div class="title-container">
@@ -25,8 +23,6 @@
           <el-button type="primary" :loading="loading" style="width:100%; margin-bottom: 30px;" @click="handleLogin">登录</el-button>
         </el-form>
       </div>
-    <!-- </el-col> -->
-  <!-- </el-row> -->
 </template>
 <script setup>
 import { ref } from 'vue'
