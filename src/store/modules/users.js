@@ -1,6 +1,7 @@
 import { login, logout } from '@/api/user'
 import { ElMessage } from 'element-plus'
 import { setTimeStamp } from '@/utils/auth'
+import router from '@/router'
 export default {
   namespaced: true,
   state: () => ({
@@ -28,6 +29,7 @@ export default {
             // 保存登录时间
             setTimeStamp()
             // 路由跳转
+            router.push('/home')
           } else {
             ElMessage.error(res.message)
           }

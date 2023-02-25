@@ -1,0 +1,17 @@
+// 处理 input 的白/蓝边
+.el-input__inner {
+  box-shadow: none !important;
+  --el-select-input-focus-border-color: none !important;
+}
+
+// 处理 input 白色背景
+.el-input__wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  --el-select-input-focus-border-color: none !important;
+}
+
+// 处理图片的灰色底
+.el-avatar {
+  --el-avatar-bg-color: none !important;
+}
