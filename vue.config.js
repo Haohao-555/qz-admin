@@ -5,8 +5,8 @@ function resolve(dir) {
 module.exports = {
   devServer: {
     proxy: {
-      '/api': {
-        target: 'http://39.104.61.32:4000/adminapi'
+      '/adminapi': {
+        target: 'http://39.104.61.32/'
       }
     }
   },

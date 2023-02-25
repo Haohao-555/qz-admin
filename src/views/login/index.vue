@@ -2,23 +2,22 @@
       <div class="login-container">
         <el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginFromRef">
           <div class="title-container">
-            <h3 class="title">登录</h3>
+            <h3 class="title">HM - ADMIN</h3>
           </div>
-          <el-form-item prop="username">
+          <el-form-item prop="account">
             <span class="icon">
               <svg-icon icon="user"></svg-icon>
             </span>
-            <el-input placeholder="username" name="username" type="text" v-model="loginForm.username"></el-input>
+            <el-input placeholder="account" name="account" type="text" v-model="loginForm.account"></el-input>
           </el-form-item>
           <el-form-item prop="password">
             <span class="icon">
               <svg-icon icon="password"></svg-icon>
             </span>
-            <el-input placeholder="password" name="password" :type="passwordType" v-model="loginForm.password">
-              <span class="show-pwd" @click="onChangePwdType">
-                <svg-icon :icon="passwordType == 'password' ? 'eye' : 'eye-open'"></svg-icon>
-              </span>
-            </el-input>
+            <span class="show-pwd" @click="onChangePwdType">
+              <svg-icon :icon="passwordType == 'password' ? 'eye' : 'eye-open'"></svg-icon>
+            </span>
+            <el-input placeholder="password" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
           </el-form-item>
           <el-button type="primary" :loading="loading" style="width:100%; margin-bottom: 30px;" @click="handleLogin">登录</el-button>
         </el-form>
@@ -26,14 +25,19 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 import { validatePassword } from './rules.js'
+
+const store = useStore()
+
 const loading = ref(false)
 const loginFromRef = ref(null)
+const passwordType = ref('password')
 
 // 数据源
 const loginForm = ref({
-  username: 'super-admin',
-  password: '123456'
+  account: 'super-admin',
+  password: '123'
 })
 
 // 校验规则
@@ -54,8 +58,20 @@ const loginRules = ref({
   ]
 })
 
+const handleLogin = () => {
+  loginFromRef.value.validate(valid => {
+    if (!valid) return
+    loading.value = true
+    store.dispatch('user/login', loginForm.value).then(() => {
+      loading.value = false
+    }).catch(err => {
+      console.log(err)
+      loading.value = false
+    })
+  })
+}
+
 // 处理密码框文本显示状态
-const passwordType = ref('password')
 const onChangePwdType = () => {
   if (passwordType.value === 'password') {
     passwordType.value = 'text'
@@ -63,27 +79,37 @@ const onChangePwdType = () => {
     passwordType.value = 'password'
   }
 }
-
-const handleLogin = () => {}
 </script>
 <style lang="scss" scoped>
-$bg: #2d3a4b;
+$bg: rgba(13, 38, 68);
 $dark_gray: #889aa4;
 $light_gray: #eee;
 $cursor: #fff;
 
 .login-container {
+  position: relative;
   min-height: 100%;
   width: 100%;
   background-color: $bg;
+  background-image: url(~@/assets/loginbg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   overflow: hidden;
 
   .login-form {
-    position: relative;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
     width: 520px;
+    height: max-content;
     max-width: 100%;
-    padding: 160px 35px 0;
-    margin: 0 auto;
+    padding: 35px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
     overflow: hidden;
     .icon {
       display: inline-block;
@@ -144,6 +170,17 @@ $cursor: #fff;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-image: url(~@/assets/logo.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        vertical-align: middle;
+      }
     }
 
     ::v-deep .lang-select {

@@ -6,8 +6,11 @@ export const publicRoutes = [
     component: () => import('@/views/login/index')
   }
 ]
+
+export const privateRoute = []
+
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: publicRoutes
+  routes: [...publicRoutes, ...privateRoute]
 })
 export default router
