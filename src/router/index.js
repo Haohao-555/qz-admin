@@ -1,6 +1,14 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import store from '@/store'
 import layout from '@/layout/index'
+import chartline from './modules/chartline'
+import componentguide from './modules/componentguide'
+import componenticon from './modules/componenticon'
+import componeteditor from './modules/componenteditor'
+import componetmarkdown from './modules/componentmarkdown'
+import tablehook from './modules/tablehook'
+import tabletree from './modules/tabletree'
+import userrole from './modules/userrole'
+import usermanage from './modules/usermanage'
 
 export const publicRoutes = [
   {
@@ -43,31 +51,12 @@ export const publicRoutes = [
   }
 ]
 
-export const privateRoute = [
-  {
-
-  }
+export const privateRoutes = [
+  chartline, componentguide, componenticon, componeteditor, componetmarkdown, tablehook, tabletree, userrole, usermanage
 ]
-
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [...publicRoutes, ...privateRoute]
+  routes: publicRoutes
 })
 
-// 路由守卫
-const whiteList = ['/login']
-router.beforeEach((to, from, next) => {
-  if (store.getters.isLogin) {
-    if (to.path === '/login') {
-      next('/home')
-    }
-    next()
-  } else {
-    if (whiteList.includes(to.path)) {
-      next()
-    } else {
-      next('/login')
-    }
-  }
-})
 export default router

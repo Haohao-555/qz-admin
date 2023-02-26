@@ -16,6 +16,19 @@
 import AppMain from './component/AppMain'
 import Navbar from './component/Navbar'
 import Sidebar from './component/Sidebar'
+
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { filtersRoutes, generateMenus } from '@/utils/route'
+
+const router = useRouter()
+
+const routes = computed(() => {
+  const fRoutes = filtersRoutes(router.getRoutes())
+  return generateMenus(fRoutes)
+})
+
+console.log(routes.value)
 </script>
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';
