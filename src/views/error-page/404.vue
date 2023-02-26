@@ -1,5 +1,7 @@
 <template>
-  <div class="">401</div>
+  <div class="">404</div>
 </template>
-<script setup></script>
+<script setup>
+console.log('pp')
+</script>
 <style lang="scss"></style>

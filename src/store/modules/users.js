@@ -1,19 +1,22 @@
 import { login, logout } from '@/api/user'
 import { ElMessage } from 'element-plus'
 import { setTimeStamp } from '@/utils/auth'
+import { setItem, getItem } from '@/utils/storage'
+import { TOKEN } from '@/constant'
 import router from '@/router'
 export default {
   namespaced: true,
   state: () => ({
-    isLogin: false,
+    isLogin: getItem(TOKEN) || false,
     userInfo: {}
   }),
   mutations: {
     setUserInfo(state, userInfo) {
       state.userInfo = userInfo
     },
-    setisLogin(state, isLogin = false) {
-      state.isLogin = isLogin
+    setisLogin(state) {
+      state.isLogin = true
+      setItem(TOKEN, true)
     }
   },
   actions: {
@@ -24,8 +27,8 @@ export default {
           if (res.errno !== -1) { // 登录成功
             ElMessage.success('登录成功')
             // 保存用户信息
-            this.commit('user/setUserInfo', res.data)
-            this.commit('user/setisLogin', true)
+            // this.commit('user/setUserInfo', res.data)
+            this.commit('user/setisLogin')
             // 保存登录时间
             setTimeStamp()
             // 路由跳转
@@ -41,8 +44,8 @@ export default {
       return new Promise((resolve, reject) => {
         logout().then(res => {
           console.log('退出登录', res)
-          this.commit('user/setUserInfo', {})
-          this.commit('user/setisLogin', false)
+          // this.commit('user/setUserInfo', {})
+          // this.commit('user/setisLogin', false)
         }).catch(err => reject(err))
       })
     }

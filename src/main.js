@@ -13,4 +13,4 @@ import './permission'
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)
-app.use(store).use(router).mount('#app')
+app.use(router).use(store).mount('#app')

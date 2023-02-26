@@ -5,8 +5,8 @@ export default {
   name: 'chartline',
   redirect: '/chart/line',
   meta: {
-    title: 'chart',
-    icon: 'personnel'
+    title: '图表',
+    icon: 'chart'
   },
   children: [
     {
@@ -14,8 +14,8 @@ export default {
       name: 'chartline',
       component: () => import('@/views/Chart-line/index'),
       meta: {
-        title: 'chartline',
-        icon: 'memo'
+        title: '线性图表',
+        icon: 'personnel'
       }
     }
   ]

@@ -25,27 +25,14 @@ export const publicRoutes = [
         name: 'home',
         component: () => import('@/views/Home/index'),
         meta: {
-          title: 'home',
+          title: '首页',
           icon: 'personnel'
         }
       },
       {
-        path: '/401',
-        name: '401',
-        component: () => import('@/views/error-page/401'),
-        meta: {
-          title: '401',
-          icon: 'personnel'
-        }
-      },
-      {
-        path: '/404',
+        path: '/:catchAll(.*)',
         name: '404',
-        component: () => import('@/views/error-page/404'),
-        meta: {
-          title: '404',
-          icon: 'personnel'
-        }
+        component: () => import('@/views/error-page/404')
       }
     ]
   }
@@ -60,3 +47,21 @@ const router = createRouter({
 })
 
 export default router
+// {
+//   path: '/401',
+//   name: '401',
+//   component: () => import('@/views/error-page/401'),
+//   meta: {
+//     title: '401',
+//     icon: 'personnel'
+//   }
+// },
+// {
+//   path: '/404',
+//   name: '404',
+//   component: () => import('@/views/error-page/404'),
+//   meta: {
+//     title: '404',
+//     icon: 'personnel'
+//   }
+// }

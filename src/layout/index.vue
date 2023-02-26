@@ -1,7 +1,7 @@
 <template>
   <div class="app-wrapper" :class="[$store.getters.sidebarOpened ? 'openSidebar' :'hideSidebar']">
     <!-- 左侧导航 -->
-    <sidebar id="guide-sidebar" class="sidebar-container"></sidebar>
+    <sidebar id="guide-sidebar" class="sidebar-container" :style="{ backgroundColor: $store.getters.cssVar.menuBg }"></sidebar>
     <div class="main-container">
       <div class="fixed-header">
         <!-- 顶部的 navbar -->
@@ -16,19 +16,6 @@
 import AppMain from './component/AppMain'
 import Navbar from './component/Navbar'
 import Sidebar from './component/Sidebar'
-
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { filtersRoutes, generateMenus } from '@/utils/route'
-
-const router = useRouter()
-
-const routes = computed(() => {
-  const fRoutes = filtersRoutes(router.getRoutes())
-  return generateMenus(fRoutes)
-})
-
-console.log(routes.value)
 </script>
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';

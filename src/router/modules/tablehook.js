@@ -5,16 +5,16 @@ export default {
   name: 'tablehook',
   redirect: '/table/tablehook',
   meta: {
-    title: 'table',
-    icon: 'discount'
+    title: '超级表格',
+    icon: 'personnel'
   },
   children: [
     {
       path: '/table/tablehook',
       component: () => import('@/views/Table-hook/index'),
       meta: {
-        title: 'tablehook',
-        icon: 'memo'
+        title: 'Hook 表格',
+        icon: 'personnel'
       }
     }
   ]

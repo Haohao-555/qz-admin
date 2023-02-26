@@ -81,7 +81,7 @@ const onChangePwdType = () => {
 }
 </script>
 <style lang="scss" scoped>
-$bg: rgba(13, 38, 68);
+$bg: #0D2644;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 $cursor: #fff;

@@ -1,12 +1,10 @@
 <template>
-    <div>
-      <!-- 外部图标 -->
-      <div v-if="isExternal" :style="styleExternalIcon" class="svg-external-icon svg-icon" :class="className"></div>
-      <!-- 内部图标 -->
-      <svg v-else class="svg-icon" :class="className" aria-hidden="true">
-        <use :xlink:href="iconName"/>
-      </svg>
-    </div>
+  <!-- 外部图标 -->
+  <div v-if="isExternal" :style="styleExternalIcon" class="svg-external-icon svg-icon" :class="className"></div>
+    <!-- 内部图标 -->
+    <svg v-else class="svg-icon" :class="className" aria-hidden="true">
+      <use :xlink:href="iconName"/>
+  </svg>
 </template>
 <script setup>
 import { isExternal as external } from '@/utils/validate'

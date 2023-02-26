@@ -5,7 +5,7 @@ export default {
   name: 'componenticon',
   redirect: '/component/guide',
   meta: {
-    title: 'component',
+    title: '常用组件',
     icon: 'personnel'
   },
   children: [
@@ -13,7 +13,7 @@ export default {
       path: '/component/icon',
       component: () => import('@/views/Component-icon/index'),
       meta: {
-        title: 'componenticon',
+        title: '图标',
         icon: 'personnel'
       }
     }
