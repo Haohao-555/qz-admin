@@ -6,7 +6,7 @@ export default {
   redirect: '/table/tablehook',
   meta: {
     title: '超级表格',
-    icon: 'personnel'
+    icon: 'table'
   },
   children: [
     {
@@ -14,7 +14,7 @@ export default {
       component: () => import('@/views/Table-tree/index'),
       meta: {
         title: 'Tree 表格',
-        icon: 'personnel'
+        icon: 'table-item'
       }
     }
   ]

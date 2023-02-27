@@ -11,6 +11,7 @@ router.beforeEach(async (to, from, next) => {
   if (store.getters.isLogin) { // 已登录
     if (!store.getters.hasUserInfo) {
       const res = await isLogin()
+      console.log(res, '123')
       store.commit('user/setUserInfo', res.data.userInfo)
       // 动态路由
       // TODO: const { permission = [] } = store.getters.userInfo

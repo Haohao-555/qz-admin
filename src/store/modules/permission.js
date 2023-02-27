@@ -1,5 +1,5 @@
 // 处理权限路由的模块
-import { publicRoutes, privateRoutes } from '@/router'
+import { publicRoutes, privateRoutes, errorRoutes } from '@/router'
 export default {
   namespaced: true,
   state: {
@@ -23,10 +23,9 @@ export default {
       })
 
       // 最后添加 不匹配路由进入 404
-      // routes.push({
-      //   path: '/:catchAll(.*)',
-      //   redirect: '/404'
-      // })
+      errorRoutes.forEach(item => {
+        routes.push(item)
+      })
       context.commit('setRoutes', routes)
       return routes
     }

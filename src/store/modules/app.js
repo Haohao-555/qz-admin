@@ -6,6 +6,9 @@ export default {
   mutations: {
     triggerSidebarOpened (state) {
       state.sidebarOpened = !state.sidebarOpened
+    },
+    closeSidebarOpened(state) {
+      state.sidebarOpened = false
     }
   }
 }

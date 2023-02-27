@@ -6,7 +6,7 @@ export default {
   redirect: '/component/guide',
   meta: {
     title: '常用组件',
-    icon: 'personnel'
+    icon: 'component'
   },
   children: [
     {
@@ -14,7 +14,7 @@ export default {
       component: () => import('@/views/Component-editor/index'),
       meta: {
         title: '富文本编辑器',
-        icon: 'personnel'
+        icon: 'component-item'
       }
     }
   ]

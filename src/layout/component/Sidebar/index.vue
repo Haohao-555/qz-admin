@@ -2,7 +2,7 @@
   <div class="">
     <div class="logo-container">
       <el-avatar :size="logoHeight" shape="square" :src="backgroundImgUrl"></el-avatar>
-      <h1 class="logo-title">HM-ADMIN</h1>
+      <h1 class="logo-title" v-if="$store.getters.sidebarOpened">HM-ADMIN</h1>
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>

@@ -15,7 +15,7 @@ export default {
       component: () => import('@/views/Chart-line/index'),
       meta: {
         title: '线性图表',
-        icon: 'personnel'
+        icon: 'chart-item'
       }
     }
   ]
