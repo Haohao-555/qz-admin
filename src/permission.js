@@ -28,13 +28,12 @@ router.beforeEach(async (to, from, next) => {
       const filterRoutes = await store.dispatch('permission/filterRoutes', permission)
       // 利用 addRoute 循环添加
       filterRoutes.forEach(item => router.addRoute(item))
-      console.log('shenc')
+      next({ path: to.path })
     }
 
     if (to.path === '/login') {
       next('/')
     }
-    console.log('去哪里', to.path)
     next()
   } else { // 未登录
     if (whiteList.includes(to.path)) {
