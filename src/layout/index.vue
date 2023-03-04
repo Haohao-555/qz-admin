@@ -20,6 +20,10 @@
       </div>
       <!-- 内容区 -->
       <app-main />
+      <div class="fiexd-footer">
+        <!-- 底部条 -->
+        <nav-footer />
+      </div>
     </div>
     <div class="mask" v-if="showMask" @click="closeAside"></div>
   </div>
@@ -31,7 +35,7 @@ import { useIsMobile } from '@/hook/useIsMobile'
 import AppMain from './component/AppMain'
 import Navbar from './component/Navbar'
 import Sidebar from './component/Sidebar'
-
+import NavFooter from './component/NavFooter'
 useIsMobile()
 
 const store = useStore()
@@ -52,7 +56,18 @@ const closeAside = () => store.commit('app/changeSidebarOpened', false)
   position: relative;
   height: 100%;
   width: 100%;
-
+  .main-container {
+    position: relative;
+    background-color: #f0f2f5;
+    .fiexd-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: 200;
+    }
+  }
   .mask {
     content: '';
     position: absolute;
@@ -62,7 +77,7 @@ const closeAside = () => store.commit('app/changeSidebarOpened', false)
     left: 0;
     right: 0;
     margin: auto;
-    background-color: rgba($color: #000, $alpha: 0.1);
+    background-color: rgba($color: #000, $alpha: 0.5);
     z-index: 200;
   }
 }

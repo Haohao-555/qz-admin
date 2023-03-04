@@ -26,7 +26,8 @@
 <script setup>
 import {} from 'vue'
 import { useStore } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb/index'
+import hamburger from '@/components/Hamburger/index'
+import breadcrumb from '@/components/Breadcrumb/index'
 const store = useStore()
 
 // 退出登录
