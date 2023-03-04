@@ -1,3 +1,4 @@
+// 重置 侧栏样式
 #app {
   .main-container {
     min-height: 100%;
@@ -17,7 +18,7 @@
     z-index: 1001;
     overflow: hidden;
 
-    // 重置 element-plus 的css
+    // 重置 element-plus 的 css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out,
         0s padding-right ease-in-out;

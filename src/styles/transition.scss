@@ -1,3 +1,4 @@
+// 汉堡组件动画
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
   transition: all 0.5s;
@@ -12,7 +13,8 @@
 .breadcrumb-leave-active {
   position: absolute;
 }
-/* fade-transform */
+
+// 路由动画
 .fade-transform-leave-active,
 .fade-transform-enter-active {
   transition: all 0.5s;
