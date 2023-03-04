@@ -9,7 +9,8 @@
     </router-view>
   </div>
 </template>
-<script setup></script>
+<script setup>
+</script>
 <style lang="scss" scoped>
 .app-main {
   min-height: calc(100vh - 50px - 43px);

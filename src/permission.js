@@ -7,7 +7,6 @@ const whiteList = ['/login']
 
 // 路由鉴权
 router.beforeEach(async (to, from, next) => {
-  console.log(123)
   if (store.getters.isLogin) { // 已登录
     if (!store.getters.hasUserInfo) {
       const res = await isLogin()

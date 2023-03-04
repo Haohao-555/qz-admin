@@ -7,6 +7,8 @@ const getters = {
   },
   // 侧栏是否展开
   sidebarOpened: state => state.app.sidebarOpened,
+  // 是否为移动端
+  isMobile: state => state.app.isMobile,
   // css 样式表
   cssVar: state => ({
     ...state.theme.variable
