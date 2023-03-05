@@ -1,6 +1,5 @@
 const getters = {
   userInfo: state => state.user.userInfo,
-  isLogin: state => state.user.isLogin,
   // 本地是否存在用户信息
   hasUserInfo: state => {
     return JSON.stringify(state.user.userInfo) !== '{}'

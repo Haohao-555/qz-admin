@@ -1,22 +1,15 @@
 import { login, logout } from '@/api/user'
-import { ElMessage } from 'element-plus'
-import { setTimeStamp } from '@/utils/auth'
-import { setItem, getItem } from '@/utils/storage'
-import { TOKEN, PAGE } from '@/constant'
-import router from '@/router'
+import { ElMessage, ElNotification } from 'element-plus'
+import { PAGE } from '@/constant'
+import router, { resetRouter } from '@/router'
 export default {
   namespaced: true,
   state: () => ({
-    isLogin: getItem(TOKEN) || false,
     userInfo: {}
   }),
   mutations: {
     setUserInfo(state, userInfo) {
       state.userInfo = userInfo
-    },
-    setisLogin(state) {
-      state.isLogin = true
-      setItem(TOKEN, true)
     }
   },
   actions: {
@@ -24,14 +17,13 @@ export default {
       const { account, password } = userInfo
       return new Promise((resolve, reject) => {
         login({ account, password }).then(res => {
-          if (res.errno !== -1) { // 登录成功
-            ElMessage.success('登录成功')
-            // 保存用户信息
-            // this.commit('user/setUserInfo', res.data)
-            this.commit('user/setisLogin')
-            // 保存登录时间
-            setTimeStamp()
-            // 路由跳转
+          if (res.errorno === 0) {
+            ElNotification({
+              title: '登录成功',
+              message: '欢迎来到 HM-ADMIN 后台管理系统',
+              type: 'success',
+              duration: 1500
+            })
             router.push(PAGE)
           } else {
             ElMessage.error(res.message)
@@ -43,9 +35,13 @@ export default {
     logout(context) {
       return new Promise((resolve, reject) => {
         logout().then(res => {
-          console.log('退出登录', res)
-          // this.commit('user/setUserInfo', {})
-          // this.commit('user/setisLogin', false)
+          if (res.errorno === 0) {
+            resetRouter()
+            this.commit('user/setUserInfo', {})
+            router.push('/login')
+          } else {
+            ElMessage.error(res.message)
+          }
         }).catch(err => reject(err))
       })
     }

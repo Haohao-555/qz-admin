@@ -56,10 +56,12 @@ const onLinkClick = (item) => {
     margin-right: 6px;
   }
   .no-redirect {
+    line-height: 54px;
     color: #97a8be;
     cursor: text;
   }
   .redirect {
+    line-height: 54px;
     color: #666;
     font-weight: 600;
     cursor: pointer;

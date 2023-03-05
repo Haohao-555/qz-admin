@@ -1,8 +1,6 @@
 import axios from 'axios'
 import router from '@/router'
-// import store from '@/store'
 import { ElMessage } from 'element-plus'
-// import { isCheckTimeout } from '@/utils/auth'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   withCredentials: true
@@ -25,8 +23,8 @@ service.interceptors.request.use(
 
 // 响应拦截器
 service.interceptors.response.use(response => {
-  const { errno, message } = response.data
-  if (errno === 4001) { // 未登录
+  const { errorno, message } = response.data
+  if (errorno === 6000) { // 信息被删除
     ElMessage.error(message)
     router.push('/login')
   }

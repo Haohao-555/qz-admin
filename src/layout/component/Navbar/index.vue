@@ -6,7 +6,7 @@
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <el-avatar shape="square" :size="40" :src="require('@/assets/logo.png')"></el-avatar>
+          <el-avatar shape="circle" :size="40" :src="$store.getters.userInfo.avatar"></el-avatar>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">

@@ -1,5 +1,5 @@
 // 处理权限路由的模块
-import { publicRoutes, privateRoutes, errorRoutes } from '@/router'
+import { publicRoutes, privateRoutes } from '@/router'
 export default {
   namespaced: true,
   state: {
@@ -20,11 +20,6 @@ export default {
       menus.forEach(key => {
         // 权限名 与 路由的 name 匹配
         routes.push(...privateRoutes.filter(item => item.name === key))
-      })
-
-      // 最后添加 不匹配路由进入 404
-      errorRoutes.forEach(item => {
-        routes.push(item)
       })
       context.commit('setRoutes', routes)
       return routes
