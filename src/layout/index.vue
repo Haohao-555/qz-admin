@@ -18,6 +18,7 @@
         <!-- 顶部的 navbar -->
         <navbar />
       </div>
+      <tags-view id="guide-tags"></tags-view>
       <!-- 内容区 -->
       <app-main />
       <div class="fiexd-footer">
@@ -36,6 +37,7 @@ import AppMain from './component/AppMain'
 import Navbar from './component/Navbar'
 import Sidebar from './component/Sidebar'
 import NavFooter from './component/NavFooter'
+import TagsView from '@/components/TagsView'
 useIsMobile()
 
 const store = useStore()

@@ -3,8 +3,9 @@
 </template>
 <script setup></script>
 <style lang="scss" scoped>
+@import '~@/styles/variables.scss';
 .footer {
-  height: 30px;
+  height: #{footerHeight};
   line-height: 30px;
   text-align: center;
   background-color: #fff;

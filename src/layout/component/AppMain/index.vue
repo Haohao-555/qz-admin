@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main">
+  <el-scrollbar class="app-main">
     <router-view v-slot="{ Component, route }">
       <transition name="fade-transform" mode="out-in">
         <keep-alive>
@@ -7,17 +7,16 @@
         </keep-alive>
       </transition>
     </router-view>
-  </div>
+  </el-scrollbar>
 </template>
-<script setup>
-</script>
+<script setup></script>
 <style lang="scss" scoped>
+@import '~@/styles/variables.scss';
 .app-main {
-  min-height: calc(100vh - 50px - 43px);
+  height: calc(100vh - #{$headerHeight} - #{$tagViewHeight} - #{$footerHeight});
   width: 100%;
   position: relative;
-  overflow: hidden;
-  padding: 104px 20px 20px 20px;
   box-sizing: border-box;
+  padding: 10px;
 }
 </style>
