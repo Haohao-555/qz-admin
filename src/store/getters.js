@@ -8,6 +8,8 @@ const getters = {
   sidebarOpened: state => state.app.sidebarOpened,
   // 是否为移动端
   isMobile: state => state.app.isMobile,
+  // 标签
+  tagsViewList: state => state.app.tagsViewList,
   // css 样式表
   cssVar: state => ({
     ...state.theme.variable
