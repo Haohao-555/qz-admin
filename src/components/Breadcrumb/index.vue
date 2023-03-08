@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb class="breadcrumb">
+  <el-breadcrumb class="breadcrumb" v-if="!$store.getters.isMobile">
     <transition-group name="breadcrumb">
       <el-breadcrumb-item v-for="(item, i) in breadcrumData" :key="item.path">
         <!-- 不可点击 -->

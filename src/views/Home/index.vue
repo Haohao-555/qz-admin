@@ -1,5 +1,5 @@
 <template>
-  <div class="home-view"></div>
+  <div class="home-view" :class="$store.getters.isMobile? 'mobile' : ''"></div>
 </template>
 <script setup></script>
 <style lang="scss" scoped>
@@ -12,5 +12,8 @@
   background-position: center;
   border-radius: 6px;
   background-color: #fff;
+}
+.mobile {
+  background-size: contain;
 }
 </style>

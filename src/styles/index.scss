@@ -4,6 +4,8 @@
 @import './transition.scss';
 @import './update-element.scss';
 
+
+
 html,
 body {
   height: 100%;
@@ -14,6 +16,7 @@ body {
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
     Microsoft YaHei, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #app {
