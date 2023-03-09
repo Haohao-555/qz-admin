@@ -1,22 +1,34 @@
 <template>
   <div class="navbar">
-    <hamburger class="hamburger-container"/>
-    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container"/>
+    <hamburger class="hamburger-container" />
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <el-avatar shape="circle" :size="40" :src="$store.getters.userInfo.avatar"></el-avatar>
+          <el-avatar
+            shape="circle"
+            :size="40"
+            :src="$store.getters.userInfo.avatar"
+          ></el-avatar>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
-            <router-link to="/">
-              <el-dropdown-item>个人信息</el-dropdown-item>
+            <router-link :to="PAGE">
+              <el-dropdown-item>
+                <el-icon><House /></el-icon>
+                首页
+              </el-dropdown-item>
             </router-link>
             <a target="_blank" href="">
-              <el-dropdown-item>修改密码</el-dropdown-item>
+              <el-dropdown-item>
+                <el-icon><Edit /></el-icon>
+                修改密码
+              </el-dropdown-item>
             </a>
-            <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
+            <el-dropdown-item divided @click="logout">
+              <el-icon><SwitchButton /></el-icon>退出登录
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -28,6 +40,8 @@ import {} from 'vue'
 import { useStore } from 'vuex'
 import hamburger from '@/components/Hamburger/index'
 import breadcrumb from '@/components/Breadcrumb/index'
+import { SwitchButton, House, Edit } from '@element-plus/icons-vue'
+import { PAGE } from '@/constant'
 const store = useStore()
 
 // 退出登录
@@ -85,5 +99,8 @@ const logout = () => {
       }
     }
   }
+}
+::v-deep .el-dropdown-menu__item--divided {
+  line-height: 0px;
 }
 </style>
