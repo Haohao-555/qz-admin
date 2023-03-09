@@ -5,7 +5,7 @@ const LOGIN_API = '/user/login'
 // 退出登录 API
 const LOGOUT_API = '/user/logout'
 // 是否已登录
-const ISLOGIN_API = 'user/isLogin'
+const ISLOGIN_API = '/user/isLogin'
 
 export const login = data => {
   return request({
