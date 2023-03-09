@@ -37,7 +37,7 @@ import AppMain from './component/AppMain'
 import Navbar from './component/Navbar'
 import Sidebar from './component/Sidebar'
 import NavFooter from './component/NavFooter'
-import TagsView from '@/components/TagsView'
+import TagsView from './component/TagsView'
 useIsMobile()
 
 const store = useStore()

@@ -5,7 +5,7 @@ export const useIsMobile = () => {
   const isMobile = () => {
     const state = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
     const clientWidth = document.documentElement.clientWidth
-    if (state || clientWidth <= 1200) { // 移动端
+    if (state || clientWidth <= 900) { // 移动端
       store.commit('app/changeIsMobile', true)
       // 关闭侧栏
       store.commit('app/changeSidebarOpened', false)
