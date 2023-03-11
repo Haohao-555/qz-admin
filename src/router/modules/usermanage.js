@@ -5,7 +5,7 @@ export default {
   name: 'usermanage',
   redirect: '/user/manage',
   meta: {
-    title: 'User',
+    title: 'user',
     icon: 'personnel'
   },
   children: [
@@ -13,7 +13,7 @@ export default {
       path: '/user/manage',
       component: () => import('@/views/User-manage/index'),
       meta: {
-        title: 'User-Manage',
+        title: 'userManage',
         icon: 'personnel-manage'
       }
     }

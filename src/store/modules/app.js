@@ -1,5 +1,5 @@
 import { getItem, setItem } from '@/utils/storage'
-import { TAGS_VIEW } from '@/constant'
+import { TAGS_VIEW, LANG } from '@/constant'
 export default {
   namespaced: true,
   state: () => ({
@@ -8,7 +8,9 @@ export default {
     // 是否为移动端
     isMobile: false,
     // 标签列表
-    tagsViewList: getItem(TAGS_VIEW) || []
+    tagsViewList: getItem(TAGS_VIEW) || [],
+    // 语言
+    language: getItem(LANG) || 'zh'
   }),
   mutations: {
     triggerSidebarOpened(state) {
@@ -42,6 +44,10 @@ export default {
         state.tagsViewList.splice(payload.index + 1, state.tagsViewList.length - payload.index + 1)
       }
       setItem(TAGS_VIEW, state.tagsViewList)
+    },
+    setLanguage (state, lang) {
+      setItem(LANG, lang)
+      state.language = lang
     }
   }
 }

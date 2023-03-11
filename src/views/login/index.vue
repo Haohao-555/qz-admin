@@ -36,8 +36,8 @@ const passwordType = ref('password')
 
 // 数据源
 const loginForm = ref({
-  account: '96352',
-  password: '321'
+  account: '39436',
+  password: '3347'
 })
 
 // 校验规则

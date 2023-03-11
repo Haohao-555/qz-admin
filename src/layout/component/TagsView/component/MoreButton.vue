@@ -1,25 +1,25 @@
 <template>
   <el-dropdown trigger="click" :teleported="false">
     <el-button size="small" type="primary">
-      <span style="padding-right: 6px">更多</span>
+      <span style="padding-right: 6px">{{ $t('msg.moreBtn.text') }}</span>
       <el-icon><ArrowDown /></el-icon>
     </el-button>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item @click="refresh">
-          <el-icon><Refresh /></el-icon>刷新
+          <el-icon><Refresh /></el-icon>{{ $t('msg.moreBtn.refresh') }}
         </el-dropdown-item>
         <el-dropdown-item @click="maximize">
-          <el-icon><FullScreen /></el-icon>最大化
+          <el-icon><FullScreen /></el-icon>{{ $t('msg.moreBtn.max') }}
         </el-dropdown-item>
         <el-dropdown-item divided @click="closeCurrentTab">
-          <el-icon><Remove /></el-icon>关闭当前
+          <el-icon><Remove /></el-icon>{{ $t('msg.moreBtn.closeCurrent') }}
         </el-dropdown-item>
         <el-dropdown-item @click="closeOtherTab">
-          <el-icon><CircleClose /></el-icon>关闭其他
+          <el-icon><CircleClose /></el-icon>{{ $t('msg.moreBtn.closeOther') }}
         </el-dropdown-item>
         <el-dropdown-item @click="closeRightTab">
-          <el-icon><FolderDelete /></el-icon>关闭右侧
+          <el-icon><FolderDelete /></el-icon>{{ $t('msg.moreBtn.closeRight') }}
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>
@@ -29,7 +29,7 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { PAGE } from '@/constant'
+import { useI18n } from 'vue-i18n'
 import {
   Refresh,
   FullScreen,
@@ -42,6 +42,7 @@ import { ElMessage } from 'element-plus'
 const route = useRoute()
 const store = useStore()
 const router = useRouter()
+const i18n = useI18n()
 
 const activeRoute = computed(() => route.fullPath)
 const i = computed(() =>
@@ -59,20 +60,18 @@ const maximize = () => {
 
 // 关闭当前
 const closeCurrentTab = () => {
-  store.commit('app/removeTagsView', {
-    type: 'index',
-    index: i.value
-  })
-  if (store.getters.tagsViewList.length !== 0) {
-    const path =
-      store.getters.tagsViewList[store.getters.tagsViewList.length - 1].path
-    router.push(path)
+  const tagLength = store.getters.tagsViewList.length
+  if (tagLength > 1) {
+    store.commit('app/removeTagsView', {
+      type: 'index',
+      index: i.value
+    })
+    router.push(store.getters.tagsViewList[tagLength - 2].fullPath)
   } else {
     ElMessage({
-      message: '标签导航栏不能为空',
+      message: i18n.t('msg.toast.tagNotNull'),
       type: 'warning'
     })
-    router.push(PAGE)
   }
 }
 

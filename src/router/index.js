@@ -20,7 +20,7 @@ export const publicRoutes = [
         name: 'home',
         component: () => import('@/views/Home/index'),
         meta: {
-          title: 'Home',
+          title: 'home',
           icon: 'home'
         }
       },
@@ -29,7 +29,7 @@ export const publicRoutes = [
         name: 'private',
         component: () => import('@/views/Private/index'),
         meta: {
-          title: 'Private',
+          title: 'private',
           icon: 'private'
         }
       },
@@ -37,7 +37,7 @@ export const publicRoutes = [
         path: '/chart',
         redirect: '/chart/line',
         meta: {
-          title: 'Chart',
+          title: 'chart',
           icon: 'chart'
         },
         children: [
@@ -46,7 +46,7 @@ export const publicRoutes = [
             name: 'chartline',
             component: () => import('@/views/Chart-line/index'),
             meta: {
-              title: 'Line-chart',
+              title: 'lineChart',
               icon: 'chart-item'
             }
           }
@@ -57,7 +57,7 @@ export const publicRoutes = [
         path: '/table',
         redirect: '/table/tablehook',
         meta: {
-          title: 'Super Table',
+          title: 'superTable',
           icon: 'table'
         },
         children: [
@@ -66,7 +66,7 @@ export const publicRoutes = [
             name: 'tableHook',
             component: () => import('@/views/Table-hook/index'),
             meta: {
-              title: 'Table-Hook',
+              title: 'tableHook',
               icon: 'table-item'
             }
           },
@@ -75,7 +75,7 @@ export const publicRoutes = [
             name: 'tableTree',
             component: () => import('@/views/Table-tree/index'),
             meta: {
-              title: 'Table-Tree',
+              title: 'tableTree',
               icon: 'table-item'
             }
           }
@@ -95,16 +95,7 @@ export const publicRoutes = [
             name: 'guide',
             component: () => import('@/views/Component-guide/index'),
             meta: {
-              title: 'Guide',
-              icon: 'component-item'
-            }
-          },
-          {
-            path: '/component/editor',
-            name: 'editor',
-            component: () => import('@/views/Component-editor/index'),
-            meta: {
-              title: 'Editor',
+              title: 'guide',
               icon: 'component-item'
             }
           },
@@ -113,7 +104,16 @@ export const publicRoutes = [
             name: 'icon',
             component: () => import('@/views/Component-icon/index'),
             meta: {
-              title: 'Icon',
+              title: 'icon',
+              icon: 'component-item'
+            }
+          },
+          {
+            path: '/component/editor',
+            name: 'editor',
+            component: () => import('@/views/Component-editor/index'),
+            meta: {
+              title: 'editor',
               icon: 'component-item'
             }
           },
@@ -122,7 +122,7 @@ export const publicRoutes = [
             icon: 'markdon',
             component: () => import('@/views/Component-markdown/index'),
             meta: {
-              title: 'MarkDown',
+              title: 'markDown',
               icon: 'component-item'
             }
           }
@@ -133,7 +133,7 @@ export const publicRoutes = [
         path: '/auth',
         redirect: '/auth/auth-page',
         meta: {
-          title: 'Auth',
+          title: 'auth',
           icon: 'auth'
         },
         children: [
@@ -142,7 +142,7 @@ export const publicRoutes = [
             name: 'auth-page',
             component: () => import('@/views/Auth-Page/index'),
             meta: {
-              title: 'Page',
+              title: 'page',
               icon: 'auth-item'
             }
           },
@@ -151,7 +151,7 @@ export const publicRoutes = [
             name: 'auth-dom',
             component: () => import('@/views/Auth-Dom/index'),
             meta: {
-              title: 'Dom',
+              title: 'dom',
               icon: 'auth-item'
             }
           }

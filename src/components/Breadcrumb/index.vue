@@ -4,17 +4,17 @@
       <el-breadcrumb-item v-for="(item, i) in breadcrumData" :key="item.path">
         <!-- 不可点击 -->
         <span class="no-redirect" v-if="i == breadcrumData.length - 1">
-          <span style="margin-top: -2px">
+          <span style="margin-top: -3px">
             <svg-icon :icon="item.meta.icon" />
           </span>
-          <span class="title">{{ item.meta.title }}</span>
+          <span class="title">{{ $t(`msg.route.${item.meta.title}`) }}</span>
         </span>
         <!-- 可点击 -->
         <span class="redirect" v-else @click="onLinkClick(item)">
-          <span style="margin-top: -2px">
+          <span style="margin-top: -3px">
             <svg-icon :icon="item.meta.icon" />
           </span>
-          <span class="title">{{ item.meta.title }}</span>
+          <span class="title">{{ $t(`msg.route.${item.meta.title}`) }}</span>
         </span>
       </el-breadcrumb-item>
     </transition-group>
@@ -68,9 +68,6 @@ const onLinkClick = (item) => {
     justify-content: center;
     color: #97a8be;
     cursor: text;
-    .svg-icon {
-      margin-top: -2px !important;
-    }
   }
   .redirect {
     flex-shrink: 0;

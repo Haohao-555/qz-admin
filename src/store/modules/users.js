@@ -2,6 +2,7 @@ import { login, logout } from '@/api/user'
 import { ElMessage, ElNotification } from 'element-plus'
 import { PAGE } from '@/constant'
 import router, { resetRouter } from '@/router'
+import { removeAllItem } from '@/utils/storage'
 export default {
   namespaced: true,
   state: () => ({
@@ -38,6 +39,7 @@ export default {
           if (res.errorno === 0) {
             resetRouter()
             this.commit('user/setUserInfo', {})
+            removeAllItem()
             router.push('/login')
           } else {
             ElMessage.error(res.message)

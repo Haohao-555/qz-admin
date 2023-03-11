@@ -3,6 +3,7 @@ import App from './App.vue'
 import store from './store'
 import router from './router'
 import installElementPlus from './plugins/element'
+import i18n from '@/i18n'
 // 初始化样式表
 import '@/styles/index.scss'
 // 导入 svgIcon
@@ -13,4 +14,4 @@ import './permission'
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)
-app.use(router).use(store).mount('#app')
+app.use(store).use(router).use(i18n).mount('#app')

@@ -3,6 +3,7 @@
     <hamburger class="hamburger-container" />
     <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
+      <lang-select class="right-menu-item hover-effect" effect="dark"></lang-select>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -17,17 +18,18 @@
             <router-link :to="PAGE">
               <el-dropdown-item>
                 <el-icon><House /></el-icon>
-                首页
+                {{ $t('msg.navBar.home') }}
               </el-dropdown-item>
             </router-link>
             <a target="_blank" href="">
               <el-dropdown-item>
                 <el-icon><Edit /></el-icon>
-                修改密码
+                {{ $t('msg.navBar.changePw') }}
               </el-dropdown-item>
             </a>
             <el-dropdown-item divided @click="logout">
-              <el-icon><SwitchButton /></el-icon>退出登录
+              <el-icon><SwitchButton /></el-icon>
+              {{ $t('msg.navBar.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -40,6 +42,7 @@ import {} from 'vue'
 import { useStore } from 'vuex'
 import hamburger from '@/components/Hamburger/index'
 import breadcrumb from '@/components/Breadcrumb/index'
+import LangSelect from '@/components/LangSelect/index'
 import { SwitchButton, House, Edit } from '@element-plus/icons-vue'
 import { PAGE } from '@/constant'
 const store = useStore()

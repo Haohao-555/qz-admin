@@ -16,7 +16,7 @@
         >
           <template #label>
             <svg-icon class="tabs-icon" :icon="item.meta.icon"> </svg-icon>
-            <span>{{ item.title }}</span>
+            <span>{{ generateTitle(item.title) }}</span>
           </template>
         </el-tab-pane>
       </el-tabs>
@@ -28,11 +28,14 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { PAGE } from '@/constant'
+import { generateTitle } from '@/utils/i18n'
+import { useI18n } from 'vue-i18n'
+import { ElMessage } from 'element-plus'
 import MoreButton from './component/MoreButton'
 const route = useRoute()
 const router = useRouter()
 const store = useStore()
+const i18n = useI18n()
 
 const activeTab = ref(route.fullPath)
 
@@ -59,12 +62,22 @@ const tabClick = (tabItem) => {
 
 // tab 移除
 const tabRemove = (fullpath) => {
-  const i = store.getters.tagsViewList.findIndex((tab) => tab.path === fullpath)
-  store.commit('app/removeTagsView', {
-    type: 'index',
-    index: i
-  })
-  router.push(PAGE)
+  const tagLength = store.getters.tagsViewList.length
+  if (tagLength > 1) {
+    const i = store.getters.tagsViewList.findIndex(
+      (tab) => tab.path === fullpath
+    )
+    store.commit('app/removeTagsView', {
+      type: 'index',
+      index: i
+    })
+    router.push(store.getters.tagsViewList[tagLength - 2].fullPath)
+  } else {
+    ElMessage({
+      message: i18n.t('msg.toast.tagNotNull'),
+      type: 'warning'
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>
