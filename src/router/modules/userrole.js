@@ -5,7 +5,7 @@ export default {
   name: 'userrole',
   redirect: '/user/manage',
   meta: {
-    title: '用户',
+    title: 'User',
     icon: 'personnel'
   },
   children: [
@@ -13,7 +13,7 @@ export default {
       path: '/user/role',
       component: () => import('@/views/User-role/index'),
       meta: {
-        title: '角色权限',
+        title: 'Role-Manage',
         icon: 'role'
       }
     }
