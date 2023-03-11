@@ -1,6 +1,6 @@
 <template>
-  <svg-icon :icon="icon"></svg-icon>
-  <span>{{ generateTitle(title) }}</span>
+    <svg-icon :icon="icon"></svg-icon>
+    <span>{{ generateTitle(title) }}</span>
 </template>
 <script setup>
 import { defineProps } from 'vue'

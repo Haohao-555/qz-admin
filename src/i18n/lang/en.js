@@ -34,6 +34,17 @@ export default {
   navBar: {
     home: 'Home',
     changePw: 'Change Pw',
-    logout: 'logout'
+    logout: 'Logout',
+    themeChange: 'Theme',
+    lang: 'Globalization'
+  },
+  universal: {
+    title: 'remoind',
+    confirm: 'confirm',
+    cancel: 'cancel'
+  },
+  theme: {
+    themeColorChange: 'Theme Color Change',
+    themeChange: 'Theme Change'
   }
 }

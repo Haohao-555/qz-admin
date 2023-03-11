@@ -34,6 +34,17 @@ export default {
   navBar: {
     home: '首页',
     changePw: '修改密码',
-    logout: '退出登录'
+    logout: '退出登录',
+    themeChange: '主题修改',
+    lang: '国际化'
+  },
+  universal: {
+    title: '提示',
+    confirm: '确定',
+    cancel: '取消'
+  },
+  theme: {
+    themeColorChange: '主题色更换',
+    themeChange: '主题更换'
   }
 }

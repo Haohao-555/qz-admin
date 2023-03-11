@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="side">
     <div class="logo-container">
       <el-avatar
         :size="logoHeight"
@@ -21,19 +21,22 @@ import config from '@/setting'
 const logoHeight = 30
 </script>
 <style lang="scss" scoped>
-.logo-container {
-  height: v-bind(logoHeight) + 'px';
-  padding: 10px 0 22px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .logo-title {
-    margin-left: 10px;
-    color: #fff;
-    line-height: 50px;
-    font-weight: 600;
-    font-size: 18px;
-    white-space: nowrap;
+.side {
+  background-color: #000000;
+  .logo-container {
+    height: v-bind(logoHeight) + 'px';
+    padding: 10px 0 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo-title {
+      margin-left: 10px;
+      color: #fff;
+      line-height: 50px;
+      font-weight: 600;
+      font-size: 18px;
+      white-space: nowrap;
+    }
   }
 }
 </style>

@@ -4,6 +4,7 @@
     <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
       <lang-select class="right-menu-item hover-effect" effect="dark"></lang-select>
+      <theme-select class="right-menu-item hover-effect"></theme-select>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -43,6 +44,7 @@ import { useStore } from 'vuex'
 import hamburger from '@/components/Hamburger/index'
 import breadcrumb from '@/components/Breadcrumb/index'
 import LangSelect from '@/components/LangSelect/index'
+import ThemeSelect from '@/components/ThemeSelect/index'
 import { SwitchButton, House, Edit } from '@element-plus/icons-vue'
 import { PAGE } from '@/constant'
 const store = useStore()

@@ -99,7 +99,7 @@ const tabRemove = (fullpath) => {
     }
     .el-tabs__nav-wrap {
       position: absolute;
-      width: calc(100% - 110px);
+      width: calc(100% - 100px);
     }
     .el-tabs--card > .el-tabs__header {
       box-sizing: border-box;

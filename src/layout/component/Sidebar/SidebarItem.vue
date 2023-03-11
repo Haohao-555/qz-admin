@@ -3,7 +3,11 @@
     <template #title>
       <menu-item :title="route.meta.title" :icon="route.meta.icon"></menu-item>
     </template>
-    <sidebar-item v-for="item in route.children" :key="item.path" :route="item"></sidebar-item>
+    <sidebar-item
+      v-for="item in route.children"
+      :key="item.path"
+      :route="item"
+    ></sidebar-item>
   </el-sub-menu>
   <el-menu-item v-else :index="route.path">
     <menu-item :title="route.meta.title" :icon="route.meta.icon"></menu-item>

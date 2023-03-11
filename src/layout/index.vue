@@ -8,11 +8,7 @@
     ]"
   >
     <!-- 左侧导航 -->
-    <sidebar
-      id="guide-sidebar"
-      class="sidebar-container"
-      :style="{ backgroundColor: $store.getters.cssVar.menuBg }"
-    />
+    <sidebar id="guide-sidebar" class="sidebar-container" />
     <div class="main-container">
       <div class="fixed-header">
         <!-- 顶部的 navbar -->
@@ -38,9 +34,9 @@ import Navbar from './component/Navbar'
 import Sidebar from './component/Sidebar'
 import NavFooter from './component/NavFooter'
 import TagsView from './component/TagsView'
-useIsMobile()
-
 const store = useStore()
+
+useIsMobile()
 // 计算是否展开侧栏
 const showMask = computed(() => {
   const sidebarOpened = store.getters.sidebarOpened
