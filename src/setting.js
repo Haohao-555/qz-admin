@@ -1,6 +1,6 @@
 export default {
   project: 'QZ-Admin',
-  logoUrl: '@/assets/logo.png',
+  logoUrl: 'logo.svg',
   footer: {
     title: '2022 © QZ-Admin By усил.'
   }
