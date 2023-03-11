@@ -1,8 +1,14 @@
 <template>
   <div class="">
     <div class="logo-container">
-      <el-avatar :size="logoHeight" shape="square" :src="require('@/assets/logo.png')"></el-avatar>
-      <h1 class="logo-title" v-if="$store.getters.sidebarOpened">HM-ADMIN</h1>
+      <el-avatar
+        :size="logoHeight"
+        shape="square"
+        :src="require('@/assets/' + config.logoUrl.replace('@/assets/', ''))"
+      ></el-avatar>
+      <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
+        {{ config.project }}
+      </h1>
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>
@@ -11,6 +17,7 @@
 </template>
 <script setup>
 import SidebarMenu from './SidebarMenu'
+import config from '@/setting'
 const logoHeight = 30
 </script>
 <style lang="scss" scoped>

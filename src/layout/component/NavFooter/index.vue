@@ -1,7 +1,9 @@
 <template>
-  <div class="footer">2022 © HM-Admin By усил.</div>
+  <div class="footer">{{ config.footer.title || ''}}</div>
 </template>
-<script setup></script>
+<script setup>
+import config from '@/setting'
+</script>
 <style lang="scss" scoped>
 @import '~@/styles/variables.scss';
 .footer {
