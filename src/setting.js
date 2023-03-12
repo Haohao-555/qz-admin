@@ -4,6 +4,6 @@ export default {
   publicRoute: ['/home', '/private', '/user', '/table', '/component', '/auth', '/chart'],
   privateRoute: [],
   footer: {
-    title: '2022 © QZ-Admin By усил.'
+    title: '2023 © QZ-Admin By усил.'
   }
 }
