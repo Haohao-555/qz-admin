@@ -14,8 +14,11 @@
   </el-menu-item>
 </template>
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, computed } from 'vue'
+import { useStore } from 'vuex'
 import MenuItem from './MenuItem'
+const store = useStore()
+const activeBg = computed(() => store.getters.mainColor)
 defineProps({
   route: {
     type: Object,
@@ -23,4 +26,18 @@ defineProps({
   }
 })
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-menu-item.is-active {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    width: 3px;
+    background-color: v-bind(activeBg);
+  }
+}
+</style>

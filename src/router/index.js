@@ -35,6 +35,7 @@ export const publicRoutes = [
       },
       {
         path: '/chart',
+        name: 'chart',
         redirect: '/chart/line',
         meta: {
           title: 'chart',
@@ -56,6 +57,7 @@ export const publicRoutes = [
       {
         path: '/table',
         redirect: '/table/tablehook',
+        name: 'table',
         meta: {
           title: 'superTable',
           icon: 'table'
@@ -85,6 +87,7 @@ export const publicRoutes = [
       {
         path: '/component',
         redirect: '/component/guide',
+        name: 'component',
         meta: {
           title: 'component',
           icon: 'component'
@@ -132,6 +135,7 @@ export const publicRoutes = [
       {
         path: '/auth',
         redirect: '/auth/auth-page',
+        name: 'auth',
         meta: {
           title: 'auth',
           icon: 'auth'
@@ -156,6 +160,11 @@ export const publicRoutes = [
             }
           }
         ]
+      },
+      {
+        path: '/404',
+        name: '404',
+        component: () => import('@/views/Error/404')
       }
     ]
   }

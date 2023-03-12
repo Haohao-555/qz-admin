@@ -11,6 +11,7 @@ export default {
   children: [
     {
       path: '/user/role',
+      name: 'userrole',
       component: () => import('@/views/User-role/index'),
       meta: {
         title: 'roleManage',

@@ -3,7 +3,7 @@ import store from './store'
 import { isLogin } from '@/api/user'
 import { PAGE } from '@/constant'
 // 白名单
-const whiteList = ['/login']
+const whiteList = ['/login', '/404']
 
 // 路由鉴权
 router.beforeEach(async (to, from, next) => {

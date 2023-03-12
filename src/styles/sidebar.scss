@@ -1,23 +1,6 @@
 // 重置 侧栏样式
 #app {
-  .main-container {
-    min-height: 100%;
-    transition: margin-left #{$sidebarDuration};
-    margin-left: $sideBarWidth;
-    position: relative;
-  }
-
   .sidebar-container {
-    transition: width #{$sidebarDuration};
-    width: $sideBarWidth  !important;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1001;
-    overflow: hidden;
-
     // 重置 element-plus 的 css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out,
@@ -84,14 +67,8 @@
     }
   }
 
+  // 侧栏收起
   .hideSidebar {
-    .sidebar-container {
-      width: 54px !important;
-    }
-
-    .main-container {
-      margin-left: 54px;
-    }
 
     .submenu-title-noDropdown {
       padding: 0 !important;

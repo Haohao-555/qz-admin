@@ -11,6 +11,7 @@ export default {
   children: [
     {
       path: '/user/manage',
+      name: 'usermanage',
       component: () => import('@/views/User-manage/index'),
       meta: {
         title: 'userManage',

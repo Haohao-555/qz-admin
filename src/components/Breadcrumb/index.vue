@@ -21,7 +21,7 @@
   </el-breadcrumb>
 </template>
 <script setup>
-import { watch, ref } from 'vue'
+import { watch, ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -43,7 +43,7 @@ watch(
 )
 
 const store = useStore()
-const linkHoverColor = ref(store.getters.cssVar.menuBg)
+const linkHoverColor = computed(() => store.getters.mainColor)
 
 const router = useRouter()
 const onLinkClick = (item) => {

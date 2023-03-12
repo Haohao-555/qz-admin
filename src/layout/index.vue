@@ -1,14 +1,25 @@
 <template>
-  <div
-    class="app-wrapper"
-    :class="[
-      { openSidebar: store.getters.sidebarOpened },
-      { hideSidebar: !store.getters.sidebarOpened },
-      { siderFixed: store.getters.sidebarOpened && store.getters.isMobile }
-    ]"
-  >
-    <!-- 左侧导航 -->
-    <sidebar id="guide-sidebar" class="sidebar-container" />
+  <div class="app-wrapper" :class="store.getters.sidebarOpened ? '' : 'hideSidebar'">
+    <!-- PC端侧栏 -->
+    <sidebar
+      id="guide-sidebar"
+      class="sidebar-container"
+      :collapse="!store.getters.sidebarOpened"
+    />
+    <!-- 移动端侧栏抽屉 -->
+    <el-drawer
+      v-model="openDrawer"
+      direction="ltr"
+      :show-close="false"
+      :size="sideBarWidth"
+      :destroy-on-close="true"
+      style="background-color: rgba(0, 0, 0, 0.5)"
+    >
+      <sidebar
+        class="sidebar-container drawer-sidebar"
+        :collapse="!store.getters.drawerSidebarOpened"
+      />
+    </el-drawer>
     <div class="main-container">
       <div class="fixed-header">
         <!-- 顶部的 navbar -->
@@ -22,7 +33,6 @@
         <nav-footer />
       </div>
     </div>
-    <div class="mask" v-if="showMask" @click="closeAside"></div>
   </div>
 </template>
 <script setup>
@@ -35,17 +45,21 @@ import Sidebar from './component/Sidebar'
 import NavFooter from './component/NavFooter'
 import TagsView from './component/TagsView'
 const store = useStore()
-
 useIsMobile()
-// 计算是否展开侧栏
-const showMask = computed(() => {
-  const sidebarOpened = store.getters.sidebarOpened
-  const isMobile = store.getters.isMobile
-  return sidebarOpened && isMobile
+
+// 是否显示 移动端 的侧栏
+const openDrawer = computed(() => {
+  // ! v-model 为双向数据绑定（不能直接将 store 直接绑定到 v-model）
+  return store.getters.drawerSidebarOpened
 })
 
-// 关闭侧栏
-const closeAside = () => store.commit('app/changeSidebarOpened', false)
+// 计算抽屉的宽度
+const sideBarWidth = computed(() => {
+  if (store.getters.drawerSidebarOpened) {
+    return store.getters.cssVar.sideBarWidth
+  }
+  return 0
+})
 </script>
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';
@@ -54,7 +68,31 @@ const closeAside = () => store.commit('app/changeSidebarOpened', false)
   position: relative;
   height: 100%;
   width: 100%;
+
+  // 侧栏展开
+  .sidebar-container {
+    transition: width #{$sidebarDuration};
+    width: $sideBarWidth;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    overflow: hidden;
+  }
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    width: calc(100% - #{$sideBarWidth});
+    transition: width #{$sidebarDuration};
+  }
   .main-container {
+    min-height: 100%;
+    margin-left: $sideBarWidth;
+    transition: margin-left #{$sidebarDuration};
     position: relative;
     background-color: #f0f2f5;
     .fiexd-footer {
@@ -66,42 +104,23 @@ const closeAside = () => store.commit('app/changeSidebarOpened', false)
       z-index: 200;
     }
   }
-  .mask {
-    content: '';
-    position: absolute;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background-color: rgba($color: #000, $alpha: 0.5);
-    z-index: 200;
-  }
-}
-.siderFixed {
-  .sidebar-container {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-  }
-  .main-container {
-    margin-left: 0px !important;
+
+  // 侧栏隐藏
+  &.hideSidebar {
+    .sidebar-container {
+      width: $hideSideBarWidth;
+    }
     .fixed-header {
-      width: 100% !important;
+      width: calc(100% - #{$hideSideBarWidth});
+    }
+    .main-container {
+      margin-left: $hideSideBarWidth;
     }
   }
-}
 
-.fixed-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
-  transition: width #{$sidebarDuration};
-}
-.hideSidebar .fixed-header {
-  width: calc(100% - #{$hideSideBarWidth});
+  // 抽屉侧栏（展开）
+  .sidebar-container.drawer-sidebar {
+    width: $sideBarWidth;
+  }
 }
 </style>

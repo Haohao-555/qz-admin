@@ -5,6 +5,8 @@ export default {
   state: () => ({
     // 侧栏是否展开
     sidebarOpened: true,
+    // 侧栏是否展开 （抽屉）
+    drawerSidebarOpened: false,
     // 是否为移动端
     isMobile: false,
     // 标签列表
@@ -14,10 +16,18 @@ export default {
   }),
   mutations: {
     triggerSidebarOpened(state) {
-      state.sidebarOpened = !state.sidebarOpened
+      if (state.isMobile) {
+        state.drawerSidebarOpened = !state.drawerSidebarOpened
+      } else {
+        state.sidebarOpened = !state.sidebarOpened
+      }
     },
-    changeSidebarOpened(state, flag) {
-      state.sidebarOpened = flag
+    changeSidebarOpened(state, isOpen) {
+      if (state.isMobile) {
+        state.drawerSidebarOpened = isOpen
+      } else {
+        state.sidebarOpened = isOpen
+      }
     },
     changeIsMobile(state, flag) {
       state.isMobile = flag
@@ -45,7 +55,7 @@ export default {
       }
       setItem(TAGS_VIEW, state.tagsViewList)
     },
-    setLanguage (state, lang) {
+    setLanguage(state, lang) {
       setItem(LANG, lang)
       state.language = lang
     }

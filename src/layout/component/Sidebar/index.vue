@@ -6,19 +6,29 @@
         shape="square"
         :src="require('@/assets/' + config.logoUrl.replace('@/assets/', ''))"
       ></el-avatar>
-      <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
+      <h1 class="logo-title" v-if="!collapse">
         {{ config.project }}
       </h1>
     </div>
     <el-scrollbar>
-      <sidebar-menu></sidebar-menu>
+      <sidebar-menu :collapse="collapse"></sidebar-menu>
     </el-scrollbar>
   </div>
 </template>
 <script setup>
+import { defineProps } from 'vue'
 import SidebarMenu from './SidebarMenu'
 import config from '@/setting'
 const logoHeight = 30
+defineProps({
+  collapse: {
+    type: Boolean,
+    default: false,
+    validator: function (value) {
+      return [true, false].indexOf(value) !== -1
+    }
+  }
+})
 </script>
 <style lang="scss" scoped>
 .side {

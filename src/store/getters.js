@@ -9,6 +9,8 @@ const getters = {
   },
   // 侧栏是否展开
   sidebarOpened: state => state.app.sidebarOpened,
+  // 侧栏是否展开 （抽屉）
+  drawerSidebarOpened: state => state.app.drawerSidebarOpened,
   // 是否为移动端
   isMobile: state => state.app.isMobile,
   // 标签
