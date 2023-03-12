@@ -3,8 +3,9 @@
     <hamburger class="hamburger-container" />
     <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
-      <lang-select class="right-menu-item hover-effect" effect="dark"></lang-select>
+      <switch-dark class="right-menu-item hover-effect"></switch-dark>
       <theme-select class="right-menu-item hover-effect"></theme-select>
+      <lang-select class="right-menu-item hover-effect" effect="dark"></lang-select>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -45,6 +46,7 @@ import hamburger from '@/components/Hamburger/index'
 import breadcrumb from '@/components/Breadcrumb/index'
 import LangSelect from '@/components/LangSelect/index'
 import ThemeSelect from '@/components/ThemeSelect/index'
+import SwitchDark from '@/components/SwitchDark/index'
 import { SwitchButton, House, Edit } from '@element-plus/icons-vue'
 import { PAGE } from '@/constant'
 const store = useStore()
@@ -60,7 +62,7 @@ const logout = () => {
   height: 60px;
   overflow: hidden;
   position: relative;
-  background: #fff;
+  background-color: #fff;
   border-bottom: 1px solid rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
@@ -85,7 +87,7 @@ const logout = () => {
       display: inline-block;
       padding: 6px 18px 0 0;
       font-size: 24px;
-      color: #5a5e66;
+      color: var(--el-text-color-primary);
       vertical-align: text-bottom;
 
       &.hover-effect {

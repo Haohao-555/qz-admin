@@ -4,7 +4,6 @@
     :default-active="activeMenu"
     background-color="#000"
     text-color="#bfcbd9"
-    :active-text-color="$store.getters.mainColor"
     :unique-opened="true"
     popper-class="aaaaaa"
     router

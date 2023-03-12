@@ -6,6 +6,8 @@ export const TIME_STAMP = 'timeStamp'
 export const LANG = 'language'
 // 主题色保存的 key
 export const MAIN_COLOR = 'mainColor'
+// Dark
+export const DARK = 'dark'
 // tags 保存的 key
 export const TAGS_VIEW = 'tagsView'
 

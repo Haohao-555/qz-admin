@@ -13,6 +13,8 @@ const getters = {
   drawerSidebarOpened: state => state.app.drawerSidebarOpened,
   // 是否为移动端
   isMobile: state => state.app.isMobile,
+  // 是否为暗黑模式
+  isDark: state => state.theme.isDark,
   // 标签
   tagsViewList: state => state.app.tagsViewList,
   // 当前国际化语言

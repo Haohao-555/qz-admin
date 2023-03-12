@@ -102,6 +102,7 @@ const sideBarWidth = computed(() => {
       right: 0;
       margin: auto;
       z-index: 200;
+      background-color: #fff;
     }
   }
 

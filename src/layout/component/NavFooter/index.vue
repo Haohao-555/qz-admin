@@ -10,7 +10,5 @@ import config from '@/setting'
   height: #{footerHeight};
   line-height: 30px;
   text-align: center;
-  background-color: #fff;
-  color: #858585;
 }
 </style>

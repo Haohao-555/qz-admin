@@ -1,0 +1,67 @@
+/* 自定义 element 暗黑模式样式 */
+html.dark {
+	// * qz-admin
+	--qz-admin-bg-color: #141414;
+	--qz-admin-border-color: #fff;
+
+
+	// * 以下为自定义暗黑模式内容
+	--el-text-color-regular: #141414;
+
+	// scroll-bar
+	::-webkit-scrollbar {
+		background-color: var(--el-scrollbar-bg-color) !important;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: var(--el-border-color-darker) !important;
+	}
+
+	// layout
+	.main-container {
+		background-color: var(--qz-admin-bg-color) !important;
+
+		.navbar {
+			background-color: var(--qz-admin-bg-color) !important;
+			border-bottom: 1px solid var(--qz-admin-border-color) !important;
+		}
+
+		.tabs-box {
+			background-color: var(--qz-admin-bg-color);
+		}
+
+		.app-main {
+			background-color: var(--qz-admin-bg-color);
+
+			.home-view {
+				background-color: var(--qz-admin-bg-color);
+			}
+		}
+
+		.fiexd-footer {
+			border-top: 1px solid var(--qz-admin-border-color) !important;
+			background-color: var(--qz-admin-bg-color) !important;
+		}
+	}
+
+	// menu
+	.el-menu,
+	.el-sub-menu,
+	.el-menu-item,
+	.el-sub-menu__title {
+		background-color: var(--qz-admin-bg-color) !important;
+
+		&:not(.is-active) {
+			color: #bdbdc0 !important;
+		}
+
+		&.is-active {
+			color: #ffffff !important;
+			background-color: #000000 !important;
+		}
+	}
+
+	.el-menu-item:not(.is-active):hover {
+		background-color: var(--qz-admin-bg-color) !important;
+	}
+}

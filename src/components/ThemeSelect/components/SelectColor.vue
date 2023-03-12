@@ -3,7 +3,6 @@
     :title="$t('msg.universal.title')"
     :model-value="modelValue"
     @close="closed"
-    width="22%"
   >
     <div class="content">
       <p class="title">{{ $t('msg.theme.themeColorChange') }}</p>
