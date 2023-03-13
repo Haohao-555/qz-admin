@@ -74,7 +74,7 @@ const onLinkClick = (item) => {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666;
+    color: var(--qz-admin-text-color);
     cursor: pointer;
     &:hover {
       color: v-bind(linkHoverColor);

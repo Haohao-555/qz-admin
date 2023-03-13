@@ -2,10 +2,9 @@
   <el-menu
     :collapse="collapse"
     :default-active="activeMenu"
-    background-color="#000"
     text-color="#bfcbd9"
+    background-color="#141414"
     :unique-opened="true"
-    popper-class="aaaaaa"
     router
   >
     <sidebar-item

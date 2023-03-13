@@ -1,5 +1,7 @@
 <template>
-  <div class="home-view" :class="$store.getters.isMobile? 'mobile' : ''"></div>
+  <el-card class="home-view">
+    <div :class="$store.getters.isMobile? 'mobile' : ''"></div>
+  </el-card>
 </template>
 <script setup></script>
 <style lang="scss" scoped>
@@ -11,7 +13,6 @@
   background-size: cover;
   background-position: center;
   border-radius: 6px;
-  background-color: #fff;
 }
 .mobile {
   background-size: contain;

@@ -19,7 +19,7 @@
 import { defineProps } from 'vue'
 import SidebarMenu from './SidebarMenu'
 import config from '@/setting'
-const logoHeight = 30
+const logoHeight = 28
 defineProps({
   collapse: {
     type: Boolean,
@@ -32,7 +32,8 @@ defineProps({
 </script>
 <style lang="scss" scoped>
 .side {
-  background-color: #000000;
+  background-color:#141414;
+  border-right: 1px solid var(--qz-admin-aside-border-color);
   .logo-container {
     height: v-bind(logoHeight) + 'px';
     padding: 10px 0 22px 0;

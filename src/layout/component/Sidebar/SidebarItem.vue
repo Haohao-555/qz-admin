@@ -29,6 +29,7 @@ defineProps({
 <style lang="scss" scoped>
 .el-menu-item.is-active {
   position: relative;
+  color: v-bind(activeBg);
   &::before {
     content: '';
     position: absolute;

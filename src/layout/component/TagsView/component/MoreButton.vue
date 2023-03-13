@@ -91,8 +91,4 @@ const closeRightTab = () => {
   })
 }
 </script>
-<style lang="scss" scoped>
-::v-deep .el-dropdown-menu__item--divided {
-  line-height: 0px;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -62,8 +62,8 @@ const logout = () => {
   height: 60px;
   overflow: hidden;
   position: relative;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 21, 41, 0.08);
+  background-color: var(--qz-admin-bg-color);
+  border-bottom: 1px solid var(--qz-admin-border-color);
 
   .hamburger-container {
     line-height: 60px;
@@ -87,7 +87,7 @@ const logout = () => {
       display: inline-block;
       padding: 6px 18px 0 0;
       font-size: 24px;
-      color: var(--el-text-color-primary);
+      color: var(--qz-admin-text-color);
       vertical-align: text-bottom;
 
       &.hover-effect {
@@ -100,14 +100,10 @@ const logout = () => {
         margin-top: 10px;
         position: relative;
         .el-avatar {
-          --el-avatar-background-color: none;
           margin-right: 12px;
         }
       }
     }
   }
-}
-::v-deep .el-dropdown-menu__item--divided {
-  line-height: 0px;
 }
 </style>

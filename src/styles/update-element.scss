@@ -16,3 +16,8 @@
   --el-avatar-bg-color: none !important;
   --el-avatar-background-color: none !important;
 }
+
+// 处理下拉框横线出现高度
+.el-dropdown-menu__item--divided {
+  line-height: 0px;
+}

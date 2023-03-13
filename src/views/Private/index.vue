@@ -1,5 +1,6 @@
 <template>
-  <div>private</div>
+  <div class="private">private</div>
 </template>
 <script setup></script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

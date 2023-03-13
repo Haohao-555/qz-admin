@@ -94,7 +94,7 @@ const sideBarWidth = computed(() => {
     margin-left: $sideBarWidth;
     transition: margin-left #{$sidebarDuration};
     position: relative;
-    background-color: #f0f2f5;
+    background-color: var(--qz-admin-app-main-bg-color);
     .fiexd-footer {
       position: absolute;
       bottom: 0;
@@ -102,7 +102,8 @@ const sideBarWidth = computed(() => {
       right: 0;
       margin: auto;
       z-index: 200;
-      background-color: #fff;
+      background-color: var(--qz-admin-bg-color);
+      border-top: 1px solid var(--qz-admin-border-color);
     }
   }
 

@@ -32,6 +32,7 @@ import { generateTitle } from '@/utils/i18n'
 import { useI18n } from 'vue-i18n'
 import { ElMessage } from 'element-plus'
 import MoreButton from './component/MoreButton'
+const mainColor = computed(() => store.getters.mainColor)
 const route = useRoute()
 const router = useRouter()
 const store = useStore()
@@ -83,7 +84,7 @@ const tabRemove = (fullpath) => {
 <style lang="scss" scoped>
 @import '~@/styles/variables.scss';
 .tabs-box {
-  background-color: #fff;
+  background-color: var(--qz-admin-bg-color);
   padding-top: #{$headerHeight};
   :deep(.tabs-menu) {
     position: relative;
@@ -106,17 +107,18 @@ const tabRemove = (fullpath) => {
       height: 40px;
       padding: 0 10px;
       margin: 0;
+      border-bottom-color: var(--qz-admin-border-color);
     }
     .el-tabs--card > .el-tabs__header .el-tabs__nav {
       border: none;
     }
     .el-tabs--card > .el-tabs__header .el-tabs__item {
-      color: #cccccc;
+      color: var(--qz-admin-text-color-1);
       border: none;
     }
     .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
-      color: var(--el-color-primary);
-      border-bottom: 2px solid var(--el-color-primary);
+      color: v-bind(mainColor);
+      border-bottom: 2px solid v-bind(mainColor);
     }
     .el-tabs__item .is-icon-close svg {
       margin-top: 0.5px;
