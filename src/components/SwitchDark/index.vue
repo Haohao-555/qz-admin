@@ -10,23 +10,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useToggle } from '@vueuse/shared'
-import { useDark } from '@vueuse/core'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons-vue'
-import { DARK } from '@/constant'
+import { useDark } from '@/hook/useDark'
+const store = useStore()
+const { switchDark } = useDark()
+const isDark = computed(() => store.getters.isDark)
 
-const isDark = ref(false)
-
-const switchDark = useDark({
-  storageKey: DARK,
-  // 暗黑class名字
-  valueDark: 'dark',
-  // 高亮class名字
-  valueLight: 'light'
-})
-
-const toggle = useToggle(switchDark)
+const toggle = () => switchDark()
 </script>
 <style lang="scss" scoped>
 .switch {
