@@ -22,7 +22,9 @@
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
 import { useStore } from 'vuex'
-import { generteNewStyle, writeNewStyle } from '@/utils/theme'
+// import { generteNewStyle, writeNewStyle } from '@/utils/theme'
+import { useTheme } from '@/hook/useTheme'
+const { changePrimary } = useTheme()
 defineProps({
   modelValue: {
     type: Boolean,
@@ -40,9 +42,8 @@ const closed = () => {
 }
 
 const confirm = async () => {
-  const newStyle = await generteNewStyle(mColor.value)
-  writeNewStyle(newStyle)
   store.commit('theme/setMainColor', mColor.value)
+  changePrimary(mColor.value)
   closed()
 }
 // 预定义色值

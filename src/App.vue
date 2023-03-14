@@ -8,11 +8,16 @@
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { generteNewStyle, writeNewStyle } from '@/utils/theme.js'
+import { useTheme } from '@/hook/useTheme'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
 const router = useRouter()
 const store = useStore()
+const { initTheme } = useTheme()
+
+// 初始化主题色
+initTheme()
+
 watch(
   () => router.currentRoute.value,
   () => {
@@ -22,10 +27,5 @@ watch(
   },
   { immediate: true }
 )
-
-// 生成新的 css 样式
-generteNewStyle(store.getters.mainColor).then(newStyle => {
-  writeNewStyle(newStyle)
-})
 </script>
 <style lang="scss" scoped></style>

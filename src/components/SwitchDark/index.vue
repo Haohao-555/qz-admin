@@ -13,9 +13,9 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons-vue'
-import { useDark } from '@/hook/useDark'
+import { useTheme } from '@/hook/useTheme'
 const store = useStore()
-const { switchDark } = useDark()
+const { switchDark } = useTheme()
 const isDark = computed(() => store.getters.isDark)
 
 const toggle = () => switchDark()
