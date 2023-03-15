@@ -16,6 +16,14 @@ html.dark {
 			background-color: var(--el-color-primary-dark-9) !important;
 		}
 	}
+
+	// 改写搜索框下拉框样式
+	.el-input__inner {
+		background-color: var(--el-color-primary-dark-9);
+	}
+	.el-select-dropdown {
+		background-color: var(--el-color-primary-dark-9);
+	}
 }
 
 html.light {
