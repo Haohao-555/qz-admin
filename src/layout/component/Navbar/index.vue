@@ -60,15 +60,16 @@ const logout = () => {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/styles/variables.scss';
 .navbar {
-  height: 60px;
+  height: #{$headerHeight};
   overflow: hidden;
   position: relative;
   background-color: var(--qz-admin-bg-color);
   border-bottom: 1px solid var(--qz-admin-border-color);
 
   .hamburger-container {
-    line-height: 60px;
+    line-height: #{$headerHeight};
     height: 100%;
     float: left;
     cursor: pointer;

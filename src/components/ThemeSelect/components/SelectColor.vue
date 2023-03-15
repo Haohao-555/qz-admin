@@ -22,7 +22,6 @@
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
 import { useStore } from 'vuex'
-// import { generteNewStyle, writeNewStyle } from '@/utils/theme'
 import { useTheme } from '@/hook/useTheme'
 const { changePrimary } = useTheme()
 defineProps({

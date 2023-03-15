@@ -14,7 +14,6 @@ import en from 'element-plus/lib/locale/lang/en'
 const router = useRouter()
 const store = useStore()
 const { initTheme } = useTheme()
-const mainColor = store.getters.mainColor
 
 // 初始化主题色
 initTheme()
@@ -29,8 +28,4 @@ watch(
   { immediate: true }
 )
 </script>
-<style lang="scss">
-#nprogress .bar {
-  background: v-bind(mainColor) !important; //这里可以随便写颜色
-}
-</style>
+<style lang="scss"></style>

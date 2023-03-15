@@ -2,7 +2,7 @@
   <div class="side">
     <div class="logo-container">
       <el-avatar
-        :size="logoHeight"
+        :size="28"
         shape="square"
         :src="require('@/assets/' + config.logoUrl.replace('@/assets/', ''))"
       ></el-avatar>
@@ -19,7 +19,6 @@
 import { defineProps } from 'vue'
 import SidebarMenu from './SidebarMenu'
 import config from '@/setting'
-const logoHeight = 28
 defineProps({
   collapse: {
     type: Boolean,
@@ -31,15 +30,16 @@ defineProps({
 })
 </script>
 <style lang="scss" scoped>
+@import '~@/styles/variables.scss';
 .side {
   background-color:#141414;
   border-right: 1px solid var(--qz-admin-aside-border-color);
   .logo-container {
-    height: v-bind(logoHeight) + 'px';
-    padding: 10px 0 22px 0;
+    height: #{$headerHeight};
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid var(--qz-admin-aside-border-color);
     .logo-title {
       margin-left: 10px;
       color: #fff;

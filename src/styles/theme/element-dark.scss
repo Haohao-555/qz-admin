@@ -9,20 +9,25 @@ html.dark {
 
 	// 改写 下拉框 背景色
 	.el-dropdown-menu {
-		background-color: var(--el-color-primary-dark-9);
+		background-color: var(--el-bg-color-overlay);
 	}
 	.el-popper__arrow {
 		&::before {
-			background-color: var(--el-color-primary-dark-9) !important;
+			background-color: var(--el-bg-color-overlay) !important;
 		}
 	}
 
 	// 改写搜索框下拉框样式
 	.el-input__inner {
-		background-color: var(--el-color-primary-dark-9);
+		background-color: var(--el-bg-color-overlay);
 	}
 	.el-select-dropdown {
-		background-color: var(--el-color-primary-dark-9);
+		background-color: var(--el-bg-color-overlay);
+	}
+
+	// 改写弹出框样式
+	.el-dialog {
+		background-color: var(--el-bg-color-overlay);
 	}
 }
 
