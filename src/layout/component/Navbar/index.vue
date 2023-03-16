@@ -6,6 +6,7 @@
       <switch-dark class="right-menu-item hover-effect"></switch-dark>
       <theme-select class="right-menu-item hover-effect"></theme-select>
       <lang-select class="right-menu-item hover-effect" effect="dark"></lang-select>
+      <Screenfull class="right-menu-item hover-effect"></Screenfull>
       <header-search class="right-menu-item hover-effect"></header-search>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -49,6 +50,7 @@ import LangSelect from '@/components/LangSelect/index'
 import ThemeSelect from '@/components/ThemeSelect/index'
 import SwitchDark from '@/components/SwitchDark/index'
 import HeaderSearch from '@/components/HeaderSearch/index'
+import Screenfull from '@/components/Screenfull/index'
 import { SwitchButton, House, Edit } from '@element-plus/icons-vue'
 import { PAGE } from '@/constant'
 const store = useStore()
