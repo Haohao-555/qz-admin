@@ -19,6 +19,13 @@ export default {
     userManage: 'User-manage',
     roleManage: 'Role-manage'
   },
+  login: {
+    loginBtn: 'Login',
+    adminBtn: 'Admin Login',
+    userBtn: 'User Login',
+    usernameRule: 'Username：Admin / user',
+    passwordRule: 'Password：123456'
+  },
   moreBtn: {
     text: 'more',
     max: 'maximize',

@@ -12,9 +12,12 @@ import { useTheme } from '@/hook/useTheme'
 import { useIsMobile } from '@/hook/useIsMobile'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
+import i18n from '@/i18n'
 const router = useRouter()
 const store = useStore()
 const { initTheme } = useTheme()
+// 避免刷新情况下，国际化无法匹配
+i18n.global.locale.value = store.getters.language
 useIsMobile()
 // 初始化主题色
 initTheme()

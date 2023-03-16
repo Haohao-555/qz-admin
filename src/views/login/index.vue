@@ -1,34 +1,47 @@
 <template>
   <div class="login-view">
     <el-row justify="center" align="middle">
-      <el-col :md="20" :lg="20" :xs="24" :sm="24">
+      <el-col :md="22" :lg="20" :xs="24" :sm="24">
         <el-card>
           <div class="login-container">
             <div class="login-bg" v-if="!$store.getters.isMobile"></div>
             <div class="login-form">
-              <el-form class="form-container" :model="loginForm" :rules="loginRules" ref="loginFromRef">
-                <div class="title-container">
-                  <h3 class="title">{{ config.project }}</h3>
-                </div>
-                <el-form-item prop="account">
-                  <span class="icon">
-                    <svg-icon icon="user"></svg-icon>
-                  </span>
-                  <el-input placeholder="账号 39436" name="account" type="text" v-model="loginForm.account"></el-input>
-                </el-form-item>
-                <el-form-item prop="password">
-                  <span class="icon">
-                    <svg-icon icon="password"></svg-icon>
-                  </span>
-                  <span class="show-pwd" @click="onChangePwdType">
-                    <svg-icon :icon="passwordType == 'password' ? 'eye' : 'eye-open'"></svg-icon>
-                  </span>
-                  <el-input placeholder="密码 3347" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
-                </el-form-item>
-                <div class="btn-group">
-                  <el-button type="primary" :loading="loading" style="width:100%; margin-bottom: 30px;" @click="handleLogin">登录</el-button>
-                </div>
-              </el-form>
+              <div class="option">
+                <lang-select class="lang-select"></lang-select>
+                <switch-dark></switch-dark>
+              </div>
+              <el-row justify="center" align="middle">
+                 <el-col :md="16" :lg="16" :xs="23" :sm="23">
+                  <el-form class="form-container" :model="loginForm" :rules="loginRules" ref="loginFromRef">
+                    <div class="title-container">
+                      <h3 class="title">{{ config.project }}</h3>
+                    </div>
+                    <el-form-item prop="account">
+                      <span class="icon">
+                        <svg-icon icon="user"></svg-icon>
+                      </span>
+                      <el-input :placeholder="$t('msg.login.usernameRule')" name="account" type="text" v-model="loginForm.account"></el-input>
+                    </el-form-item>
+                    <el-form-item prop="password">
+                      <span class="icon">
+                        <svg-icon icon="password"></svg-icon>
+                      </span>
+                      <span class="show-pwd" @click="onChangePwdType">
+                        <svg-icon :icon="passwordType == 'password' ? 'eye' : 'eye-open'"></svg-icon>
+                      </span>
+                      <el-input :placeholder="$t('msg.login.passwordRule')" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
+                    </el-form-item>
+                    <div class="btn-group">
+                      <el-button type="primary" round :loading="loading" style="width:100%; margin-top: 15px;" @click="handleLogin">{{ $t('msg.login.loginBtn') }}</el-button>
+                    </div>
+                  </el-form>
+                  <el-divider></el-divider>
+                  <div class="auth-btn">
+                    <el-button type="success" size="small" plain @click="adminLogin">{{ $t('msg.login.adminBtn') }}</el-button>
+                    <el-button type="warning" size="small" plain @click="userLogin">{{ $t('msg.login.userBtn') }}</el-button>
+                  </div>
+                 </el-col>
+              </el-row>
             </div>
           </div>
         </el-card>
@@ -37,9 +50,11 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { validatePassword } from './rules.js'
+import SwitchDark from '@/components/SwitchDark'
+import LangSelect from '@/components/LangSelect'
 import config from '@/setting'
 const store = useStore()
 
@@ -48,7 +63,9 @@ const loginFromRef = ref(null)
 const passwordType = ref('password')
 
 // 数据源
-const loginForm = ref({
+// 39436
+// 3347
+const loginForm = reactive({
   account: '',
   password: ''
 })
@@ -75,13 +92,25 @@ const handleLogin = () => {
   loginFromRef.value.validate(valid => {
     if (!valid) return
     loading.value = true
-    store.dispatch('user/login', loginForm.value).then(() => {
+    store.dispatch('user/login', loginForm).then(() => {
       loading.value = false
     }).catch(err => {
       console.log(err)
       loading.value = false
     })
   })
+}
+
+const adminLogin = () => {
+  loginForm.account = 'admin'
+  loginForm.password = '123456'
+  handleLogin()
+}
+
+const userLogin = () => {
+  loginForm.account = 'user'
+  loginForm.password = '123456'
+  handleLogin()
 }
 
 // 处理密码框文本显示状态
@@ -111,24 +140,33 @@ const onChangePwdType = () => {
   .login-container {
     display: flex;
     justify-content: center;
-    height: 600px;
-    background-image: url(~@/assets/login.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: 690px;
     .login-bg {
       flex: 2;
-      background-color: red;
+      background-image: url(~@/assets/loginbg.png);
+      background-repeat: no-repeat;
+      background-size: cover;
     }
     .login-form {
+      position: relative;
       flex: 3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 10px;
-      box-sizing: border-box;
+      background-image: url(~@/assets/login.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      .option {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 24px;
+        z-index: 100;
+        .lang-select {
+          font-size: 24px;
+          padding-right: 12px;
+        }
+      }
       .form-container {
-        width: 70%;
-        padding: 30px 20px;
+        width: 100%;
         border-radius: 6px;
         .title-container {
           position: relative;
@@ -196,7 +234,11 @@ const onChangePwdType = () => {
           }
         }
       }
-
+      .auth-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }

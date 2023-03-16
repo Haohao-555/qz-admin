@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
-import installElementPlus from './plugins/element'
 import i18n from '@/i18n'
+import installElementPlus from './plugins/element'
 // 初始化样式表
 import '@/styles/index.scss'
 // 暗黑模式

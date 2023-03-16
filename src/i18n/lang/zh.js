@@ -19,6 +19,13 @@ export default {
     userManage: '用户管理',
     roleManage: '角色管理'
   },
+  login: {
+    loginBtn: '登录',
+    adminBtn: '管理员登录',
+    userBtn: '用户登录',
+    usernameRule: '用户名：管理员 / 用户',
+    passwordRule: '密码：123456'
+  },
   moreBtn: {
     text: '更多',
     max: '最大化',
