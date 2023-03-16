@@ -25,7 +25,6 @@
         <!-- 顶部的 navbar -->
         <navbar />
       </div>
-      <tags-view id="guide-tags"></tags-view>
       <!-- 内容区 -->
       <app-main />
       <div class="fiexd-footer">
@@ -42,7 +41,6 @@ import AppMain from './component/AppMain'
 import Navbar from './component/Navbar'
 import Sidebar from './component/Sidebar'
 import NavFooter from './component/NavFooter'
-import TagsView from './component/TagsView'
 const store = useStore()
 
 // 是否显示 移动端 的侧栏

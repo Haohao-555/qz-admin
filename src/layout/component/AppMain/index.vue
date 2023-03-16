@@ -1,21 +1,31 @@
 <template>
+  <tags-view></tags-view>
   <el-scrollbar class="app-main">
     <router-view v-slot="{ Component, route }">
       <transition name="fade-transform" mode="out-in">
         <keep-alive>
-          <component :is="Component" :key="route.path"></component>
+          <component
+            :is="Component"
+            :key="route.path"
+            v-if="isRouterShow"
+          ></component>
         </keep-alive>
       </transition>
     </router-view>
   </el-scrollbar>
 </template>
 <script setup>
-import { watch } from 'vue'
+import { watch, provide, ref } from 'vue'
+import TagsView from '../../component/TagsView'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { isTags } from '@/utils/tags'
 const store = useStore()
 const route = useRoute()
+
+// 配合 inject 实现页面刷新 （tags-view）
+const isRouterShow = ref(true)
+provide('refresh', (val) => (isRouterShow.value = val))
 
 const getTitle = (route) => {
   let title = ''

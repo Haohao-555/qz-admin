@@ -26,7 +26,7 @@
   </el-dropdown>
 </template>
 <script setup>
-import { computed } from 'vue'
+import { computed, inject, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
@@ -43,14 +43,19 @@ const route = useRoute()
 const store = useStore()
 const router = useRouter()
 const i18n = useI18n()
-
+const refreshCurrentPage = inject('refresh')
 const activeRoute = computed(() => route.fullPath)
 const i = computed(() =>
   store.getters.tagsViewList.findIndex((tag) => tag.path === activeRoute.value)
 )
 // 刷新
 const refresh = () => {
-  router.go(0)
+  setTimeout(() => {
+    refreshCurrentPage(false)
+    nextTick(() => {
+      refreshCurrentPage(true)
+    })
+  }, 0)
 }
 
 // 最大化
