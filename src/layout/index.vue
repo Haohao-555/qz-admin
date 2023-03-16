@@ -38,14 +38,12 @@
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import { useIsMobile } from '@/hook/useIsMobile'
 import AppMain from './component/AppMain'
 import Navbar from './component/Navbar'
 import Sidebar from './component/Sidebar'
 import NavFooter from './component/NavFooter'
 import TagsView from './component/TagsView'
 const store = useStore()
-useIsMobile()
 
 // 是否显示 移动端 的侧栏
 const openDrawer = computed(() => {

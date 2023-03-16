@@ -1,33 +1,46 @@
 <template>
-      <div class="login-container">
-        <el-form class="login-form" :model="loginForm" :rules="loginRules" ref="loginFromRef">
-          <div class="title-container">
-            <h3 class="title">HM - ADMIN</h3>
+  <div class="login-view">
+    <el-row justify="center" align="middle">
+      <el-col :md="20" :lg="20" :xs="24" :sm="24">
+        <el-card>
+          <div class="login-container">
+            <div class="login-bg" v-if="!$store.getters.isMobile"></div>
+            <div class="login-form">
+              <el-form class="form-container" :model="loginForm" :rules="loginRules" ref="loginFromRef">
+                <div class="title-container">
+                  <h3 class="title">{{ config.project }}</h3>
+                </div>
+                <el-form-item prop="account">
+                  <span class="icon">
+                    <svg-icon icon="user"></svg-icon>
+                  </span>
+                  <el-input placeholder="账号 39436" name="account" type="text" v-model="loginForm.account"></el-input>
+                </el-form-item>
+                <el-form-item prop="password">
+                  <span class="icon">
+                    <svg-icon icon="password"></svg-icon>
+                  </span>
+                  <span class="show-pwd" @click="onChangePwdType">
+                    <svg-icon :icon="passwordType == 'password' ? 'eye' : 'eye-open'"></svg-icon>
+                  </span>
+                  <el-input placeholder="密码 3347" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
+                </el-form-item>
+                <div class="btn-group">
+                  <el-button type="primary" :loading="loading" style="width:100%; margin-bottom: 30px;" @click="handleLogin">登录</el-button>
+                </div>
+              </el-form>
+            </div>
           </div>
-          <el-form-item prop="account">
-            <span class="icon">
-              <svg-icon icon="user"></svg-icon>
-            </span>
-            <el-input placeholder="account" name="account" type="text" v-model="loginForm.account"></el-input>
-          </el-form-item>
-          <el-form-item prop="password">
-            <span class="icon">
-              <svg-icon icon="password"></svg-icon>
-            </span>
-            <span class="show-pwd" @click="onChangePwdType">
-              <svg-icon :icon="passwordType == 'password' ? 'eye' : 'eye-open'"></svg-icon>
-            </span>
-            <el-input placeholder="password" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
-          </el-form-item>
-          <el-button type="primary" :loading="loading" style="width:100%; margin-bottom: 30px;" @click="handleLogin">登录</el-button>
-        </el-form>
-      </div>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 <script setup>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { validatePassword } from './rules.js'
-
+import config from '@/setting'
 const store = useStore()
 
 const loading = ref(false)
@@ -36,8 +49,8 @@ const passwordType = ref('password')
 
 // 数据源
 const loginForm = ref({
-  account: '39436',
-  password: '3347'
+  account: '',
+  password: ''
 })
 
 // 校验规则
@@ -81,128 +94,110 @@ const onChangePwdType = () => {
 }
 </script>
 <style lang="scss" scoped>
-$bg: #0D2644;
-$dark_gray: #889aa4;
-$light_gray: #eee;
-$cursor: #fff;
 
-.login-container {
-  position: relative;
-  min-height: 100%;
-  width: 100%;
-  background-color: $bg;
-  background-image: url(~@/assets/loginbg.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
+.login-view {
+  height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  background-color: var(--qz-admin-bg-color);
 
-  .login-form {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    width: 520px;
-    height: max-content;
-    max-width: 100%;
-    padding: 35px;
-    margin: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    overflow: hidden;
-    .icon {
-      display: inline-block;
-      padding-left: 12px;
+  .el-row {
+    height: 100%;
+  }
+  ::v-deep .el-card__body {
+    padding: 0 !important;
+  }
+  .login-container {
+    display: flex;
+    justify-content: center;
+    height: 600px;
+    background-image: url(~@/assets/login.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    .login-bg {
+      flex: 2;
+      background-color: red;
     }
+    .login-form {
+      flex: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 10px;
+      box-sizing: border-box;
+      .form-container {
+        width: 70%;
+        padding: 30px 20px;
+        border-radius: 6px;
+        .title-container {
+          position: relative;
+          .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            padding-bottom: 42px;
+            text-align: center;
+            font-weight: bold;
+            &::before {
+              content: '';
+              display: inline-block;
+              width: 42px;
+              height: 42px;
+              margin-right: 20px;
+              background-image: url(~@/assets/logo.png);
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: contain;
+            }
+          }
+        }
+        ::v-deep .el-form-item {
+          position: relative;
+          border: 1px solid #dcdfe6;
+          border-radius: 5px;
+          color: #454545;
+            .icon {
+              display: inline-block;
+              margin-top: -4px;
+              padding-left: 12px;
+              color: #dcdfe6;
+              vertical-align: middle;
+            }
+            .show-pwd {
+              position: absolute;
+              right: 10px;
+              top: 7px;
+              font-size: 16px;
+              color: #889aa4;
+              cursor: pointer;
+              user-select: none;
+            }
+        }
 
-    ::v-deep .el-form-item {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      color: #454545;
-    }
+        ::v-deep .el-input {
+          display: inline-block;
+          height: 47px;
+          width: 85%;
+          .el-form-item__error {
+            padding-top: 12px;
+          }
 
-    ::v-deep .el-input {
-      display: inline-block;
-      height: 47px;
-      width: 85%;
-
-      input {
-        background: transparent;
-        border: 0px;
-        -webkit-appearance: none;
-        border-radius: 0px;
-        padding: 12px 5px 12px 15px;
-        color: $light_gray;
-        height: 47px;
-        caret-color: $cursor;
+          input {
+            background: transparent;
+            border: 0px;
+            -webkit-appearance: none;
+            border-radius: 0px;
+            padding: 12px 5px 12px 15px;
+            color: #dcdfe6;
+            height: 47px;
+            color: #dcdfe6;
+          }
+        }
       }
+
     }
-  }
-
-  .tips {
-    font-size: 16px;
-    line-height: 28px;
-    color: #fff;
-    margin-bottom: 10px;
-
-    span {
-      &:first-of-type {
-        margin-right: 16px;
-      }
-    }
-  }
-
-  .svg-container {
-    padding: 6px 5px 6px 15px;
-    color: $dark_gray;
-    vertical-align: middle;
-    display: inline-block;
-  }
-
-  .title-container {
-    position: relative;
-
-    .title {
-      font-size: 26px;
-      color: $light_gray;
-      margin: 0px auto 40px auto;
-      text-align: center;
-      font-weight: bold;
-      &::before {
-        content: "";
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        background-image: url(~@/assets/logo.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        vertical-align: middle;
-      }
-    }
-
-    ::v-deep .lang-select {
-      position: absolute;
-      top: 4px;
-      right: 0;
-      background-color: white;
-      font-size: 22px;
-      padding: 4px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  }
-
-  .show-pwd {
-    position: absolute;
-    right: 10px;
-    top: 7px;
-    font-size: 16px;
-    color: $dark_gray;
-    cursor: pointer;
-    user-select: none;
   }
 }
 </style>
