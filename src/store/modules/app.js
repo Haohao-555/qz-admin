@@ -52,6 +52,8 @@ export default {
         state.tagsViewList.splice(0, payload.index)
       } else if (payload.type === 'right') {
         state.tagsViewList.splice(payload.index + 1, state.tagsViewList.length - payload.index + 1)
+      } else if (payload.type === 'all') {
+        state.tagsViewList = []
       }
       setItem(TAGS_VIEW, state.tagsViewList)
     },

@@ -23,8 +23,13 @@ export default {
     loginBtn: '登录',
     adminBtn: '管理员登录',
     userBtn: '用户登录',
-    usernameRule: '用户名：管理员 / 用户',
-    passwordRule: '密码：123456'
+    usernamePlaceholder: '账号：管理员 / 用户',
+    passwordPlaceholder: '密码：123456',
+    accountRule: '账号不能为空',
+    passwordRule: '密码不能少于3位',
+    loginsuccess: '登录成功',
+    welcomeTo: '欢迎来到',
+    system: '后台管理系统'
   },
   moreBtn: {
     text: '更多',

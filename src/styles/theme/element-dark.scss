@@ -11,6 +11,7 @@ html.dark {
 	.el-dropdown-menu {
 		background-color: var(--el-bg-color-overlay);
 	}
+
 	.el-popper__arrow {
 		&::before {
 			background-color: var(--el-bg-color-overlay) !important;
@@ -21,6 +22,7 @@ html.dark {
 	.el-input__inner {
 		background-color: var(--el-bg-color-overlay);
 	}
+
 	.el-select-dropdown {
 		background-color: var(--el-bg-color-overlay);
 	}
@@ -28,6 +30,19 @@ html.dark {
 	// 改写弹出框样式
 	.el-dialog {
 		background-color: var(--el-bg-color-overlay);
+	}
+
+	// 改写 Notification
+	.el-notification {
+		background-color: var(--el-bg-color-overlay);
+		.el-notification__group {
+			.el-notification__title {
+				color: var(--qz-admin-text-color-1);
+			}
+			.el-notification__content {
+				color: var(--qz-admin-text-color-1);
+			}
+		}
 	}
 }
 

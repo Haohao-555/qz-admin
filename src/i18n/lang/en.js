@@ -23,8 +23,13 @@ export default {
     loginBtn: 'Login',
     adminBtn: 'Admin Login',
     userBtn: 'User Login',
-    usernameRule: 'Username：Admin / user',
-    passwordRule: 'Password：123456'
+    usernamePlaceholder: 'Account：Admin / user',
+    passwordPlaceholder: 'Password：123456',
+    accountRule: 'Account cannot be empty',
+    passwordRule: 'Password not less than 3 characters',
+    loginsuccess: 'Login Success',
+    welcomeTo: 'welcome come to',
+    system: 'system'
   },
   moreBtn: {
     text: 'more',
@@ -36,7 +41,7 @@ export default {
   },
   toast: {
     switchLangSuccess: 'Switch Language Success',
-    tagNotNull: 'tag cannot be empty'
+    tagNotNull: 'Tag cannot be empty'
   },
   navBar: {
     home: 'Home',

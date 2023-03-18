@@ -7,12 +7,16 @@
             <div class="login-bg" v-if="!$store.getters.isMobile"></div>
             <div class="login-form">
               <div class="option">
-                <lang-select class="lang-select"></lang-select>
                 <switch-dark></switch-dark>
               </div>
               <el-row justify="center" align="middle">
-                 <el-col :md="16" :lg="16" :xs="23" :sm="23">
-                  <el-form class="form-container" :model="loginForm" :rules="loginRules" ref="loginFromRef">
+                <el-col :md="16" :lg="16" :xs="23" :sm="23">
+                  <el-form
+                    class="form-container"
+                    :model="loginForm"
+                    :rules="loginRules"
+                    ref="loginFromRef"
+                  >
                     <div class="title-container">
                       <h3 class="title">{{ config.project }}</h3>
                     </div>
@@ -20,27 +24,55 @@
                       <span class="icon">
                         <svg-icon icon="user"></svg-icon>
                       </span>
-                      <el-input :placeholder="$t('msg.login.usernameRule')" name="account" type="text" v-model="loginForm.account"></el-input>
+                      <el-input
+                        :placeholder="$t('msg.login.usernamePlaceholder')"
+                        name="account"
+                        type="text"
+                        v-model="loginForm.account"
+                      ></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
                       <span class="icon">
                         <svg-icon icon="password"></svg-icon>
                       </span>
                       <span class="show-pwd" @click="onChangePwdType">
-                        <svg-icon :icon="passwordType == 'password' ? 'eye' : 'eye-open'"></svg-icon>
+                        <svg-icon
+                          :icon="
+                            passwordType == 'password' ? 'eye' : 'eye-open'
+                          "
+                        ></svg-icon>
                       </span>
-                      <el-input :placeholder="$t('msg.login.passwordRule')" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
+                      <el-input
+                        :placeholder="$t('msg.login.passwordPlaceholder')"
+                        name="password"
+                        :type="passwordType"
+                        v-model="loginForm.password"
+                      ></el-input>
                     </el-form-item>
                     <div class="btn-group">
-                      <el-button type="primary" round :loading="loading" style="width:100%; margin-top: 15px;" @click="handleLogin">{{ $t('msg.login.loginBtn') }}</el-button>
+                      <el-button type="primary" round style="" @click="loginBtn">{{
+                        $t('msg.login.loginBtn')
+                      }}</el-button>
                     </div>
                   </el-form>
                   <el-divider></el-divider>
                   <div class="auth-btn">
-                    <el-button type="success" size="small" plain @click="adminLogin">{{ $t('msg.login.adminBtn') }}</el-button>
-                    <el-button type="warning" size="small" plain @click="userLogin">{{ $t('msg.login.userBtn') }}</el-button>
+                    <el-button
+                      type="success"
+                      size="small"
+                      plain
+                      @click="adminLoginBtn"
+                      >{{ $t('msg.login.adminBtn') }}</el-button
+                    >
+                    <el-button
+                      type="warning"
+                      size="small"
+                      plain
+                      @click="userLoginBtn"
+                      >{{ $t('msg.login.userBtn') }}</el-button
+                    >
                   </div>
-                 </el-col>
+                </el-col>
               </el-row>
             </div>
           </div>
@@ -51,20 +83,21 @@
 </template>
 <script setup>
 import { reactive, ref } from 'vue'
-import { useStore } from 'vuex'
-import { validatePassword } from './rules.js'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { login } from '@/api/user'
+import { ElMessage, ElNotification } from 'element-plus'
 import SwitchDark from '@/components/SwitchDark'
-import LangSelect from '@/components/LangSelect'
+import { validatePassword } from './rules'
+import { PAGE } from '@/constant'
 import config from '@/setting'
-const store = useStore()
 
-const loading = ref(false)
+const i18n = useI18n()
+const router = useRouter()
 const loginFromRef = ref(null)
 const passwordType = ref('password')
 
 // 数据源
-// 39436
-// 3347
 const loginForm = reactive({
   account: '',
   password: ''
@@ -72,45 +105,57 @@ const loginForm = reactive({
 
 // 校验规则
 const loginRules = ref({
-  username: [
+  account: [
     {
       required: true,
       trigger: 'blur',
-      message: '不能为空'
+      message: i18n.t('msg.login.accountRule')
     }
   ],
   password: [
     {
       required: true,
       trigger: 'blur',
-      validator: validatePassword()
+      validator: validatePassword(i18n.t('msg.login.passwordRule'))
     }
   ]
 })
 
-const handleLogin = () => {
-  loginFromRef.value.validate(valid => {
-    if (!valid) return
-    loading.value = true
-    store.dispatch('user/login', loginForm).then(() => {
-      loading.value = false
-    }).catch(err => {
-      console.log(err)
-      loading.value = false
-    })
+const handleLogin = (loginForm) => {
+  login(loginForm).then((res) => {
+    if (res.errorno === 0) {
+      ElNotification({
+        title: i18n.t('msg.login.loginsuccess'),
+        message: `${i18n.t('msg.login.welcomeTo')} ${config.project} ${i18n.t('msg.login.system')}`,
+        type: 'success',
+        duration: 1500
+      })
+      router.push(PAGE)
+    } else {
+      ElMessage.error(res.message)
+    }
   })
 }
 
-const adminLogin = () => {
-  loginForm.account = 'admin'
-  loginForm.password = '123456'
-  handleLogin()
+const loginBtn = () => {
+  loginFromRef.value.validate((valid) => {
+    if (!valid) return
+    handleLogin(loginForm)
+  })
 }
 
-const userLogin = () => {
-  loginForm.account = 'user'
-  loginForm.password = '123456'
-  handleLogin()
+const adminLoginBtn = () => {
+  handleLogin({
+    account: 'admin',
+    password: '123456'
+  })
+}
+
+const userLoginBtn = () => {
+  handleLogin({
+    account: 'user',
+    password: '123456'
+  })
 }
 
 // 处理密码框文本显示状态
@@ -123,7 +168,6 @@ const onChangePwdType = () => {
 }
 </script>
 <style lang="scss" scoped>
-
 .login-view {
   height: 100vh;
   padding-left: 20px;
@@ -143,7 +187,7 @@ const onChangePwdType = () => {
     height: 690px;
     .login-bg {
       flex: 2;
-      background-image: url(~@/assets/loginbg.png);
+      background-image: url(~@/assets/loginbg.jpg);
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -160,10 +204,6 @@ const onChangePwdType = () => {
         position: absolute;
         right: 24px;
         z-index: 100;
-        .lang-select {
-          font-size: 24px;
-          padding-right: 12px;
-        }
       }
       .form-container {
         width: 100%;
@@ -196,24 +236,23 @@ const onChangePwdType = () => {
           border: 1px solid #dcdfe6;
           border-radius: 5px;
           color: #454545;
-            .icon {
-              display: inline-block;
-              margin-top: -4px;
-              padding-left: 12px;
-              color: #dcdfe6;
-              vertical-align: middle;
-            }
-            .show-pwd {
-              position: absolute;
-              right: 10px;
-              top: 7px;
-              font-size: 16px;
-              color: #889aa4;
-              cursor: pointer;
-              user-select: none;
-            }
+          .icon {
+            display: inline-block;
+            margin-top: -4px;
+            padding-left: 12px;
+            color: #dcdfe6;
+            vertical-align: middle;
+          }
+          .show-pwd {
+            position: absolute;
+            right: 10px;
+            top: 7px;
+            font-size: 16px;
+            color: #889aa4;
+            cursor: pointer;
+            user-select: none;
+          }
         }
-
         ::v-deep .el-input {
           display: inline-block;
           height: 47px;
@@ -231,6 +270,12 @@ const onChangePwdType = () => {
             color: #dcdfe6;
             height: 47px;
             color: #dcdfe6;
+          }
+        }
+        .btn-group {
+          .el-button {
+            width: 100%;
+            margin-top: 15px;
           }
         }
       }
