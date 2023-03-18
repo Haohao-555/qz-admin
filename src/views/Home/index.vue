@@ -1,5 +1,5 @@
 <template>
-  <el-card class="home-view">
+  <el-card class="home-view view-main-height">
     <div :class="$store.getters.isMobile? 'mobile' : ''"></div>
   </el-card>
 </template>
@@ -7,7 +7,6 @@
 <style lang="scss" scoped>
 @import '~@/styles/variables.scss';
 .home-view {
-  height: calc(100vh - #{$headerHeight} - #{$tagViewHeight} - #{$footerHeight} - 20px);
   background-image: url('~@/assets/welcome.png');
   background-repeat: no-repeat;
   background-size: cover;

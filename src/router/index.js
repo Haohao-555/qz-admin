@@ -50,6 +50,24 @@ export const publicRoutes = [
               title: 'lineChart',
               icon: 'chart-item'
             }
+          },
+          {
+            path: '/chart/tree',
+            name: 'chartTree',
+            component: () => import('@/views/Chart-tree/index'),
+            meta: {
+              title: 'treeChart',
+              icon: 'chart-item'
+            }
+          },
+          {
+            path: '/chart/pie',
+            name: 'chartpie',
+            component: () => import('@/views/Chart-pie/index'),
+            meta: {
+              title: 'pieChart',
+              icon: 'chart-item'
+            }
           }
           // ! /chart 路径下的子路径在这里加
         ]
@@ -86,22 +104,13 @@ export const publicRoutes = [
       },
       {
         path: '/component',
-        redirect: '/component/guide',
+        redirect: '/component/icon',
         name: 'component',
         meta: {
           title: 'component',
           icon: 'component'
         },
         children: [
-          {
-            path: '/component/guide',
-            name: 'guide',
-            component: () => import('@/views/Component-guide/index'),
-            meta: {
-              title: 'guide',
-              icon: 'component-item'
-            }
-          },
           {
             path: '/component/icon',
             name: 'icon',

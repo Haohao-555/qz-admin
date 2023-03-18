@@ -4,6 +4,8 @@ export default {
     private: 'Private',
     chart: 'Chart',
     lineChart: 'Line-chart',
+    treeChart: 'Tree-chart',
+    pieChart: 'Pie-chart',
     superTable: 'Super-table',
     tableHook: ' Hook-table',
     tableTree: 'Tree-table',
@@ -30,6 +32,14 @@ export default {
     loginsuccess: 'Login Success',
     welcomeTo: 'welcome come to',
     system: 'system'
+  },
+  auth: {
+    btn: 'Button Auth Manage',
+    page: 'Page Auth Manage',
+    switchPageAuth: 'Note Switch identity Aside Router'
+  },
+  errorPage: {
+    backBtn: 'Back'
   },
   moreBtn: {
     text: 'more',

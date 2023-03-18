@@ -23,6 +23,18 @@ body {
   height: 100%;
 }
 
+.view-main-height {
+  height: calc(100vh - #{$headerHeight} - #{$tagViewHeight} - #{$footerHeight} - 20px);
+}
+.qz-admin-card {
+	box-sizing: border-box;
+	padding: 20px;
+	overflow-x: hidden;
+	background-color: var(--el-fill-color-blank);
+	border: 1px solid var(--el-border-color-light);
+
+}
+
 *,
 *:before,
 *:after {
@@ -42,19 +54,4 @@ a:hover {
   cursor: pointer;
   color: inherit;
   text-decoration: none;
-}
-
-div:focus {
-  outline: none;
-}
-
-.clearfix {
-  &:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: ' ';
-    clear: both;
-    height: 0;
-  }
 }

@@ -4,6 +4,8 @@ export default {
     private: '个人',
     chart: '可视化图表',
     lineChart: '折线图',
+    treeChart: '树',
+    pieChart: '饼图',
     superTable: '超级表格',
     tableHook: ' Hook 表格',
     tableTree: 'Tree 表格',
@@ -30,6 +32,14 @@ export default {
     loginsuccess: '登录成功',
     welcomeTo: '欢迎来到',
     system: '后台管理系统'
+  },
+  auth: {
+    btn: '按钮级别的权限管理',
+    page: '页面级别的权限管理',
+    switchPageAuth: '注意：切换身份，侧栏路由'
+  },
+  errorPage: {
+    backBtn: '回到首页'
   },
   moreBtn: {
     text: '更多',

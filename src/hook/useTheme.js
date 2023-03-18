@@ -1,5 +1,5 @@
 import { useStore } from 'vuex'
-import { LIGHT_VALUE, DARK_VALUE } from '@/constant'
+import { LIGHT_VALUE, DARK_VALUE, DEFAULT_COLOR } from '@/constant'
 import color from 'css-color-function'
 import rgbHex from 'rgb-hex'
 export const useTheme = () => {
@@ -41,7 +41,9 @@ export const useTheme = () => {
   }
 
   const changePrimary = (primaryColor) => {
-    if (!primaryColor) return
+    if (!primaryColor) {
+      primaryColor = DEFAULT_COLOR
+    }
     store.commit('theme/setMainColor', primaryColor)
 
     // 设置主题色
