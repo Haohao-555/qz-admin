@@ -2,7 +2,6 @@ import router from './router'
 import store from './store'
 import { isLogin } from '@/api/user'
 import { PAGE } from '@/constant'
-import config from '@/setting'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
@@ -20,10 +19,6 @@ const whiteList = ['/login', '/404']
 // 路由鉴权
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
-
-  // 2.动态设置标题
-  const title = config.project
-  document.title = to.meta.title ? `${to.meta.title} - ${title}` : title
 
   if (!store.getters.hasUserInfo) { // 用户信息不存在
     const res = await isLogin()

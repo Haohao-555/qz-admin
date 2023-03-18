@@ -1,22 +1,21 @@
 <template>
   <div class="navbar">
-    <hamburger class="hamburger-container" />
-    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
-    <div class="right-menu">
-      <switch-dark class="right-menu-item hover-effect"></switch-dark>
-      <theme-select class="right-menu-item hover-effect"></theme-select>
-      <lang-select
-        class="right-menu-item hover-effect"
-        effect="dark"
-      ></lang-select>
-      <Screenfull class="right-menu-item hover-effect"></Screenfull>
-      <header-search class="right-menu-item hover-effect"></header-search>
+    <div>
+      <hamburger class="hamburger-container" />
+      <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
+    </div>
+    <div class="right">
+      <div class="menu">
+        <div v-for="(item, id) in toolsList" :key="id">
+          <component :is="item.component" class="menu-item"></component>
+        </div>
+      </div>
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar
             shape="circle"
-            :size="40"
+            :size="36"
             :src="$store.getters.userInfo.avatar"
           ></el-avatar>
         </div>
@@ -45,7 +44,7 @@
   </div>
 </template>
 <script setup>
-import {} from 'vue'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 import router, { resetRouter } from '@/router'
 import { logout } from '@/api/user'
@@ -62,6 +61,21 @@ import { PAGE } from '@/constant'
 import { removeAllItem } from '@/utils/storage'
 
 const store = useStore()
+
+// 功能区域
+const toolsList = computed(() => {
+  const isMobile = store.getters.isMobile
+  if (isMobile) {
+    return [{ id: 1, component: SwitchDark }]
+  }
+  return [
+    { id: 1, component: SwitchDark },
+    { id: 2, component: ThemeSelect },
+    { id: 3, component: LangSelect },
+    { id: 4, component: Screenfull },
+    { id: 5, component: HeaderSearch }
+  ]
+})
 // 退出登录
 const handLogout = () => {
   logout().then((res) => {
@@ -88,6 +102,10 @@ const handLogout = () => {
 .navbar {
   height: #{$headerHeight};
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 12px;
+  box-sizing: border-box;
   position: relative;
   background-color: var(--qz-admin-bg-color);
   border-bottom: 1px solid var(--qz-admin-border-color);
@@ -102,34 +120,26 @@ const handLogout = () => {
       background: rgba(0, 0, 0, 0.1);
     }
   }
-  .breadcrumb-container {
-    float: left;
-  }
-  .right-menu {
-    display: flex;
-    align-items: center;
-    float: right;
-    padding-right: 16px;
-    ::v-deep .right-menu-item {
-      display: inline-block;
-      padding: 6px 18px 0 0;
-      font-size: 24px;
-      color: var(--qz-admin-text-color);
-      vertical-align: text-bottom;
 
-      &.hover-effect {
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .menu {
+      display: flex;
+      align-items: center;
+      ::v-deep .menu-item {
+        display: inline-block;
+        padding: 6px 18px 0 0;
+        padding-top: 2px;
+        font-size: 24px;
+        color: var(--qz-admin-text-color);
+        vertical-align: text-bottom;
         cursor: pointer;
       }
     }
     ::v-deep .avatar-container {
       cursor: pointer;
-      .avatar-wrapper {
-        margin-top: 10px;
-        position: relative;
-        .el-avatar {
-          margin-right: 12px;
-        }
-      }
     }
   }
 }
