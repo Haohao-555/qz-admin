@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">{{ config.footer.title || ''}}</div>
+  <div class="footer">{{ (config.footer && config.footer.title) || '' }}</div>
 </template>
 <script setup>
 import config from '@/setting'

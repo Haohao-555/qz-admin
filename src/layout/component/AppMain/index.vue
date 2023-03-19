@@ -3,7 +3,7 @@
   <el-scrollbar class="app-main">
     <router-view v-slot="{ Component, route }">
       <transition name="fade-transform" mode="out-in">
-        <keep-alive>
+        <keep-alive :include="keepRouter">
           <component
             :is="Component"
             :key="route.path"
@@ -15,13 +15,17 @@
   </el-scrollbar>
 </template>
 <script setup>
-import { watch, provide, ref } from 'vue'
+import { watch, provide, ref, computed } from 'vue'
 import TagsView from '../../component/TagsView'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { isTags } from '@/utils/tags'
 const store = useStore()
 const route = useRoute()
+
+const keepRouter = computed(() => {
+  return store.getters.tagsViewList.map((tag) => tag.name)
+})
 
 // 配合 inject 实现页面刷新 （tags-view）
 const isRouterShow = ref(true)

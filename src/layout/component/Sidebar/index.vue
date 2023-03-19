@@ -19,6 +19,8 @@
 import { defineProps } from 'vue'
 import SidebarMenu from './SidebarMenu'
 import config from '@/setting'
+import { ASIDE_COLOR } from '@/constant'
+const asideColor = ASIDE_COLOR
 defineProps({
   collapse: {
     type: Boolean,
@@ -32,7 +34,7 @@ defineProps({
 <style lang="scss" scoped>
 @import '~@/styles/variables.scss';
 .side {
-  background-color:#141414;
+  background-color: v-bind(asideColor);
   border-right: 1px solid var(--qz-admin-aside-border-color);
   .logo-container {
     height: #{$headerHeight};

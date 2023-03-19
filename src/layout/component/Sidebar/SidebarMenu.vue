@@ -3,7 +3,7 @@
     :collapse="collapse"
     :default-active="activeMenu"
     text-color="#bfcbd9"
-    background-color="#141414"
+    :background-color="ASIDE_COLOR"
     :unique-opened="true"
     router
   >
@@ -21,6 +21,7 @@ import { useStore } from 'vuex'
 import { filtersRoutes, generateMenus } from '@/utils/route'
 import SidebarItem from './SidebarItem'
 import config from '@/setting'
+import { ASIDE_COLOR } from '@/constant'
 // 该项目下路由信息
 const router = useRouter()
 // 当前路由信息
@@ -42,8 +43,8 @@ const routes = computed(() => {
   const fRoutes = filtersRoutes(router.getRoutes())
   const menuList = generateMenus(fRoutes)
   const sortMenuList = []
-  if (config.publicRoute) {
-    config.publicRoute.forEach((route) => {
+  if (config.routeSort) {
+    config.routeSort.forEach((route) => {
       const i = menuList.findIndex((menuItem) => menuItem.path === route)
       if (i !== -1) {
         sortMenuList.push(menuList[i])

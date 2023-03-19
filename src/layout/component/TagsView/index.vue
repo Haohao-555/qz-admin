@@ -58,6 +58,9 @@ const showTabList = computed(() => {
 // tab 跳转
 const tabClick = (tabItem) => {
   const fullPath = tabItem.props.name
+  console.log(router.getRoutes())
+  console.log('跳转地址', fullPath)
+  console.log(router.getRoutes())
   router.push(fullPath)
 }
 

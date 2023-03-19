@@ -141,35 +141,36 @@ export const publicRoutes = [
           // ! /component 路径下的子路径在这里加
         ]
       },
-      {
-        path: '/auth',
-        redirect: '/auth/auth-page',
-        name: 'auth',
-        meta: {
-          title: 'auth',
-          icon: 'auth'
-        },
-        children: [
-          {
-            path: '/auth/auth-page',
-            name: 'auth-page',
-            component: () => import('@/views/Auth-Page/index'),
-            meta: {
-              title: 'page',
-              icon: 'auth-item'
-            }
-          },
-          {
-            path: '/auth/auth-dom',
-            name: 'auth-dom',
-            component: () => import('@/views/Auth-Dom/index'),
-            meta: {
-              title: 'dom',
-              icon: 'auth-item'
-            }
-          }
-        ]
-      },
+      // ! 目前此路由有问题（会影响到其他路由跳转），未找到具体原因
+      // {
+      //   path: '/permission',
+      //   redirect: '/permission/page',
+      //   name: 'permission',
+      //   meta: {
+      //     title: 'auth',
+      //     icon: 'auth'
+      //   },
+      //   children: [
+      //     {
+      //       path: '/permission/page',
+      //       name: 'aaa',
+      //       component: () => import('@/views/Auth-Page/index'),
+      //       meta: {
+      //         title: 'page',
+      //         icon: 'auth-item'
+      //       }
+      //     },
+      //     {
+      //       path: '/permission/btn',
+      //       name: 'bbb',
+      //       component: () => import('@/views/Auth-Dom/index'),
+      //       meta: {
+      //         title: 'dom',
+      //         icon: 'auth-item'
+      //       }
+      //     }
+      //   ]
+      // },
       {
         path: '/404',
         name: '404',
