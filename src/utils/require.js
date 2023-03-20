@@ -9,14 +9,6 @@ const service = axios.create({
 // 请求接口拦截
 service.interceptors.request.use(
   config => {
-    // if (store.getters.isLogin) { // 已登录
-    //   if (isCheckTimeout()) {
-    //     ElMessage.warn('登录超时')
-    //     // TODO: 强制退出登录
-    //     store.dispatch('user/logout')
-    //     // return Promise.reject(new Error('token 失效'))
-    //   }
-    // }
     return config
   }
 )

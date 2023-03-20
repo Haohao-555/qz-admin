@@ -58,7 +58,6 @@ const sideBarWidth = computed(() => {
 })
 </script>
 <style lang="scss" scoped>
-@import '~@/styles/mixin.scss';
 @import '~@/styles/variables.scss';
 .app-wrapper {
   position: relative;

@@ -16,7 +16,7 @@
         >
           <template #label>
             <svg-icon class="tabs-icon" :icon="item.meta.icon"> </svg-icon>
-            <span>{{ generateTitle(item.title) }}</span>
+            <span>{{  $t('msg.route.' + item.title)  }}</span>
           </template>
         </el-tab-pane>
       </el-tabs>
@@ -28,7 +28,6 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { generateTitle } from '@/utils/i18n'
 import { useI18n } from 'vue-i18n'
 import { ElMessage } from 'element-plus'
 import MoreButton from './component/MoreButton'

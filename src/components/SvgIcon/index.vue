@@ -7,7 +7,6 @@
   </svg>
 </template>
 <script setup>
-import { isExternal as external } from '@/utils/validate'
 import { defineProps, computed } from 'vue'
 const props = defineProps({
   // icon 图标
@@ -22,7 +21,7 @@ const props = defineProps({
   }
 })
 // 判断当前图标是否为外部图标
-const isExternal = computed(() => external(props.icon))
+const isExternal = computed(() => (/^(https?:|mailto:|tel:)/.test(props.icon)))
 // 外部图标样式
 const styleExternalIcon = computed(() => ({
   mask: `url(${props.icon}) no-repeat 50% 50%`,

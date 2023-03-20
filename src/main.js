@@ -12,6 +12,7 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/styles/theme/element-dark.scss'
 // 导入 svgIcon
 import installIcons from '@/icons'
+// 自定义指令
 import installDirective from '@/directives'
 // 导入路由鉴权
 import './permission'

@@ -18,7 +18,7 @@ export const TAGS_VIEW = 'tagsView'
 // 超时时长(毫秒) 两小时
 export const TOKEN_TIMEOUT_VALUE = 24 * 3600 * 1000
 // 默认色值
-export const DEFAULT_COLOR = config.color || '#00CED1'
+export const DEFAULT_COLOR = config.mainColor || '#00CED1'
 // 侧栏默认色值
 export const ASIDE_COLOR = config.asideColor || '#000000'
 // 初始跳转页面

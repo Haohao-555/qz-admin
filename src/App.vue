@@ -18,6 +18,7 @@ const store = useStore()
 const { initTheme } = useTheme()
 // 避免刷新情况下，国际化无法匹配
 i18n.global.locale.value = store.getters.language
+// 监听屏幕是 移动端 或 PC端
 useIsMobile()
 // 初始化主题色
 initTheme()
