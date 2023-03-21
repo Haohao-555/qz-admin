@@ -6,7 +6,8 @@ const LOGIN_API = '/user/login'
 const LOGOUT_API = '/user/logout'
 // 是否已登录
 const ISLOGIN_API = '/user/isLogin'
-
+// 获取用户列表
+const GETUSERLIST_API = '/user/list'
 export const login = data => {
   return request({
     url: LOGIN_API,
@@ -26,5 +27,13 @@ export const isLogin = () => {
   return request({
     url: ISLOGIN_API,
     method: 'POST'
+  })
+}
+
+export const getUserList = (data) => {
+  return request({
+    url: GETUSERLIST_API,
+    method: 'GET',
+    params: data
   })
 }

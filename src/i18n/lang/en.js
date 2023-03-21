@@ -33,6 +33,21 @@ export default {
     welcomeTo: 'welcome come to',
     system: 'system'
   },
+  userManage: {
+    account: 'Account',
+    nickname: 'Name',
+    age: 'Age',
+    city: 'City',
+    gender: 'Gender',
+    idcard: 'Idcard',
+    intriduce: 'Intriduce',
+    createdAtFormat: 'CreatedTime',
+    avatar: 'Avatar',
+    email: 'Email',
+    state: 'State',
+    updateAtFormat: 'UpdateTime',
+    action: 'Action'
+  },
   auth: {
     btn: 'Button Auth Manage',
     page: 'Page Auth Manage',

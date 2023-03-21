@@ -33,6 +33,21 @@ export default {
     welcomeTo: '欢迎来到',
     system: '后台管理系统'
   },
+  userManage: {
+    account: '账号',
+    nickname: '姓名',
+    age: '年龄',
+    city: '城市',
+    gender: '性别',
+    idcard: '身份证',
+    intriduce: '个人介绍',
+    createdAtFormat: '创建时间',
+    avatar: '头像',
+    email: '邮箱',
+    state: '状态',
+    updateAtFormat: '更新时间',
+    action: '操作'
+  },
   auth: {
     btn: '按钮级别的权限管理',
     page: '页面级别的权限管理',

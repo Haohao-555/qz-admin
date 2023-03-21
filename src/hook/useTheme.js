@@ -65,7 +65,6 @@ export const useTheme = () => {
   const initTheme = () => {
     const primaryColor = store.getters.mainColor
     initDark()
-    console.log(primaryColor)
     changePrimary(primaryColor)
   }
 

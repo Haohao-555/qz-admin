@@ -44,6 +44,31 @@ html.dark {
 			}
 		}
 	}
+
+	// 改写 el-table 
+	.el-table {
+		tr {
+			background: var(--el-bg-color-overlay) !important;
+		}
+		th {
+			background: #262727 !important;
+		}
+	}
+
+	// 改写 el-pagination
+	.pagination {
+		.el-pager {
+			.number {
+				background-color: #303030;
+			}
+			.more {
+				background-color: #303030;
+			}
+		}
+		.btn-next {
+			background-color: #303030;
+		}
+	}
 }
 
 html.light {
