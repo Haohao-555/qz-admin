@@ -35,6 +35,7 @@ export default {
   },
   userManage: {
     account: 'Account',
+    role: 'Role',
     nickname: 'Name',
     age: 'Age',
     city: 'City',
@@ -63,6 +64,9 @@ export default {
     closeRight: 'close Right',
     closeOther: 'close Other',
     closeCurrent: 'close Current'
+  },
+  btn: {
+    search: 'Search'
   },
   toast: {
     switchLangSuccess: 'Switch Language Success',

@@ -6,9 +6,12 @@ $headerHeight: 60px;
 $tagViewHeight: 45px;
 $footerHeight: 30px;
 
+$minContainerWidth: 980px;
+
 :export {
   sideBarWidth: $sideBarWidth;
   headerHeight: $headerHeight;
   tagViewHeight: $tagViewHeight;
   footerHeight: $footerHeight;
+  minContainerWidth: $minContainerWidth;
 }

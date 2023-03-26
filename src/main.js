@@ -14,11 +14,14 @@ import '@/styles/theme/element-dark.scss'
 import installIcons from '@/icons'
 // 自定义指令
 import installDirective from '@/directives'
+// 自定义过滤器
+import installFilter from '@/filters'
 // 导入路由鉴权
 import './permission'
 
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)
+installFilter(app)
 installDirective(app)
 app.use(store).use(router).use(i18n).mount('#app')

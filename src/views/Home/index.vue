@@ -5,7 +5,6 @@
 </template>
 <script setup></script>
 <style lang="scss" scoped>
-@import '~@/styles/variables.scss';
 .home-view {
   background-image: url('~@/assets/welcome.png');
   background-repeat: no-repeat;

@@ -70,9 +70,10 @@
   // 侧栏收起
   .hideSidebar {
 
-    .submenu-title-noDropdown {
+    .el-sub-menu__title {
       padding: 0 !important;
       position: relative;
+      justify-content: center;
 
       .el-tooltip {
         padding: 0 !important;

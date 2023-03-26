@@ -33,7 +33,7 @@ export const isLogin = () => {
 export const getUserList = (data) => {
   return request({
     url: GETUSERLIST_API,
-    method: 'GET',
-    params: data
+    method: 'POST',
+    data
   })
 }

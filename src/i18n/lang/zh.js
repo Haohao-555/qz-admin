@@ -35,6 +35,7 @@ export default {
   },
   userManage: {
     account: '账号',
+    role: '身份',
     nickname: '姓名',
     age: '年龄',
     city: '城市',
@@ -63,6 +64,9 @@ export default {
     closeRight: '关闭右侧',
     closeOther: '关闭其他',
     closeCurrent: '关闭当前'
+  },
+  btn: {
+    search: '搜索'
   },
   toast: {
     switchLangSuccess: '切换语言成功',

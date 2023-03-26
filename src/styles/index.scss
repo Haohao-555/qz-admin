@@ -24,6 +24,10 @@ body {
 .view-main-height {
   height: calc(100vh - #{$headerHeight} - #{$tagViewHeight} - #{$footerHeight} - 20px);
 }
+::selection{ 
+  background-color:var(--el-color-primary); 
+  color:#000; 
+}
 
 *,
 *:before,

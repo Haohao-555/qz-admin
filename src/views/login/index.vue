@@ -29,7 +29,8 @@
                         name="account"
                         type="text"
                         v-model="loginForm.account"
-                      ></el-input>
+                      >
+                      </el-input>
                     </el-form-item>
                     <el-form-item prop="password">
                       <span class="icon">
@@ -50,9 +51,13 @@
                       ></el-input>
                     </el-form-item>
                     <div class="btn-group">
-                      <el-button type="primary" round style="" @click="loginBtn">{{
-                        $t('msg.login.loginBtn')
-                      }}</el-button>
+                      <el-button
+                        type="primary"
+                        round
+                        style=""
+                        @click="loginBtn"
+                        >{{ $t('msg.login.loginBtn') }}</el-button
+                      >
                     </div>
                   </el-form>
                   <el-divider></el-divider>
@@ -126,7 +131,9 @@ const handleLogin = (loginForm) => {
     if (res.errorno === 0) {
       ElNotification({
         title: i18n.t('msg.login.loginsuccess'),
-        message: `${i18n.t('msg.login.welcomeTo')} ${config.project} ${i18n.t('msg.login.system')}`,
+        message: `${i18n.t('msg.login.welcomeTo')} ${config.project} ${i18n.t(
+          'msg.login.system'
+        )}`,
         type: 'success',
         duration: 1500
       })
@@ -233,43 +240,51 @@ const onChangePwdType = () => {
         }
         ::v-deep .el-form-item {
           position: relative;
-          border: 1px solid #dcdfe6;
-          border-radius: 5px;
-          color: #454545;
-          .icon {
-            display: inline-block;
-            margin-top: -4px;
-            padding-left: 12px;
-            color: #dcdfe6;
-            vertical-align: middle;
-          }
-          .show-pwd {
-            position: absolute;
-            right: 10px;
-            top: 7px;
-            font-size: 16px;
-            color: #889aa4;
-            cursor: pointer;
-            user-select: none;
-          }
-        }
-        ::v-deep .el-input {
-          display: inline-block;
-          height: 47px;
-          width: 85%;
-          .el-form-item__error {
-            padding-top: 12px;
-          }
+          margin-bottom: 29px !important;
+          .el-form-item__content {
+            display: block !important;
+            position: relative;
+            .el-form-item__error {
+              padding-top: 12px;
+            }
+            .el-input {
+              display: inline-block;
+              height: 47px;
+              width: 100%;
+              .el-input__wrapper {
+                width: 100%;
+              }
+              .el-input__inner {
+                background: transparent;
+                border: 0px;
+                -webkit-appearance: none;
+                border-radius: 0px;
+                padding: 12px 5px 12px 18px;
+                color: #dcdfe6;
+                height: 47px;
+                color: #dcdfe6;
+              }
+            }
+            .icon {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 10px;
+              line-height: 47px;
+              color: #dcdfe6;
+              z-index: 100;
+            }
 
-          input {
-            background: transparent;
-            border: 0px;
-            -webkit-appearance: none;
-            border-radius: 0px;
-            padding: 12px 5px 12px 15px;
-            color: #dcdfe6;
-            height: 47px;
-            color: #dcdfe6;
+            .show-pwd {
+              position: absolute;
+              right: 10px;
+              top: 7px;
+              font-size: 16px;
+              color: #889aa4;
+              cursor: pointer;
+              user-select: none;
+              z-index: 100;
+            }
           }
         }
         .btn-group {

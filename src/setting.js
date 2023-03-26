@@ -6,7 +6,7 @@ export default {
   // *首页跳转路径（必填）
   home: '/home',
   // *项目主题色 （可选）（十六进制）
-  mainColor: '#00CED1',
+  mainColor: '#FAD400',
   // *侧栏主题色（可选）（十六进制）
   asideColor: '#000000',
   // *侧栏菜单项显示顺序 （可选）
