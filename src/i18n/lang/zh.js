@@ -54,7 +54,18 @@ export default {
     reset: '重置'
   },
   private: {
-    seeInfo: '查看个人信息'
+    seeInfo: '查看',
+    changeInfo: '修改',
+    visit_num: '访问量',
+    call_num: '点赞量',
+    download_num: '下载量',
+    attention_num: '关注量',
+    project_introduction: '项目介绍',
+    download: '下载',
+    author: '作者',
+    front: '前端',
+    back: '后端',
+    timetitle: '时间沙漏'
   },
   auth: {
     btn: '按钮级别的权限管理',

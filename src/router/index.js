@@ -33,45 +33,45 @@ export const publicRoutes = [
           icon: 'private'
         }
       },
-      {
-        path: '/chart',
-        name: 'chart',
-        redirect: '/chart/line',
-        meta: {
-          title: 'chart',
-          icon: 'chart'
-        },
-        children: [
-          {
-            path: '/chart/line',
-            name: 'chartline',
-            component: () => import('@/views/Chart-line/index'),
-            meta: {
-              title: 'lineChart',
-              icon: 'chart-item'
-            }
-          },
-          {
-            path: '/chart/tree',
-            name: 'chartTree',
-            component: () => import('@/views/Chart-tree/index'),
-            meta: {
-              title: 'treeChart',
-              icon: 'chart-item'
-            }
-          },
-          {
-            path: '/chart/pie',
-            name: 'chartpie',
-            component: () => import('@/views/Chart-pie/index'),
-            meta: {
-              title: 'pieChart',
-              icon: 'chart-item'
-            }
-          }
-          // ! /chart 路径下的子路径在这里加
-        ]
-      },
+      // {
+      //   path: '/chart',
+      //   name: 'chart',
+      //   redirect: '/chart/line',
+      //   meta: {
+      //     title: 'chart',
+      //     icon: 'chart'
+      //   },
+      //   children: [
+      //     {
+      //       path: '/chart/line',
+      //       name: 'chartline',
+      //       component: () => import('@/views/Chart-line/index'),
+      //       meta: {
+      //         title: 'lineChart',
+      //         icon: 'chart-item'
+      //       }
+      //     },
+      //     {
+      //       path: '/chart/tree',
+      //       name: 'chartTree',
+      //       component: () => import('@/views/Chart-tree/index'),
+      //       meta: {
+      //         title: 'treeChart',
+      //         icon: 'chart-item'
+      //       }
+      //     },
+      //     {
+      //       path: '/chart/pie',
+      //       name: 'chartpie',
+      //       component: () => import('@/views/Chart-pie/index'),
+      //       meta: {
+      //         title: 'pieChart',
+      //         icon: 'chart-item'
+      //       }
+      //     }
+      //     // ! /chart 路径下的子路径在这里加
+      //   ]
+      // },
       {
         path: '/table',
         redirect: '/table/tablehook',

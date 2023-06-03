@@ -54,7 +54,18 @@ export default {
     reset: 'Reset'
   },
   private: {
-    seeInfo: 'See All'
+    seeInfo: 'See All',
+    changeInfo: 'Change',
+    visit_num: 'Visit Num',
+    call_num: 'Call Num',
+    download_num: 'Download Num',
+    attention_num: 'Attention Num',
+    project_introduction: 'Project Introduction',
+    download: 'Download',
+    author: 'Author',
+    front: 'Front-end development',
+    back: 'Back-end development',
+    timetitle: 'Time Hourglass'
   },
   auth: {
     btn: 'Button Auth Manage',

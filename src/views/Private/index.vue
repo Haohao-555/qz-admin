@@ -2,7 +2,7 @@
   <div class="private-view">
     <div class="container">
       <el-row :gutter="10" class="private-session">
-        <el-col :md="20" :lg="20" :xs="24" :sm="24">
+        <el-col :md="20" :lg="20" :xs="24" :sm="24" class="private-container">
           <el-card>
             <div class="info-container">
               <div class="ava">
@@ -17,110 +17,39 @@
                   <span
                     >早安，{{ userInfo.account }} 请开始您一天的工作吧！</span
                   >
-                  <el-button type="primary" @click="onSelect"
-                    >{{ $t('msg.private.seeInfo') }}</el-button
-                  >
+                  <div>
+                    <el-button type="primary" @click="onchange">{{
+                      $t('msg.private.changeInfo')
+                    }}</el-button>
+                    <el-button type="primary" @click="onSelect">{{
+                      $t('msg.private.seeInfo')
+                    }}</el-button>
+                  </div>
                 </div>
                 <div class="intriduce">{{ userInfo.intriduce }}</div>
               </div>
             </div>
           </el-card>
-          <el-card>
-            <el-tabs v-model="tab_active" class="tabs-container">
-              <el-tab-pane label="全部" name="first">
-                <el-scrollbar>
-                  <div class="tabs-item">
-                    <el-collapse>
-                      <el-collapse-item title="Consistency" name="1">
-                        <div>
-                          Consistent with real life: in line with the process
-                          and logic of real life, and comply with languages and
-                          habits that the users are used to;
-                        </div>
-                        <div>
-                          Consistent within interface: all elements should be
-                          consistent, such as: design style, icons and texts,
-                          position of elements, etc.
-                        </div>
-                      </el-collapse-item>
-                      <el-collapse-item title="Feedback" name="2">
-                        <div>
-                          Operation feedback: enable the users to clearly
-                          perceive their operations by style updates and
-                          interactive effects;
-                        </div>
-                        <div>
-                          Visual feedback: reflect current state by updating or
-                          rearranging elements of the page.
-                        </div>
-                      </el-collapse-item>
-                      <el-collapse-item title="Efficiency" name="3">
-                        <div>
-                          Simplify the process: keep operating process simple
-                          and intuitive;
-                        </div>
-                        <div>
-                          Definite and clear: enunciate your intentions clearly
-                          so that the users can quickly understand and make
-                          decisions;
-                        </div>
-                        <div>
-                          Easy to identify: the interface should be
-                          straightforward, which helps the users to identify and
-                          frees them from memorizing and recalling.
-                        </div>
-                      </el-collapse-item>
-                    </el-collapse>
-                  </div>
-                </el-scrollbar>
-              </el-tab-pane>
-              <el-tab-pane label="待审批" name="third">
-                <div class="tabs-item">待填充</div>
-              </el-tab-pane>
-              <el-tab-pane label="已审批" name="second">
-                <div class="tabs-item">待填充</div>
-              </el-tab-pane>
-            </el-tabs>
-          </el-card>
+          <data-charts v-if="!$store.getters.isMobile" />
         </el-col>
-        <el-col :md="4" :lg="4" :xs="24" :sm="24" class="hidden-xs-only">
-          <el-card :body-style="{ padding: '0px' }">
-            <div class="author-container">
-              <img :src="require('@/assets/author.jpg')" class="image" />
-              <div style="padding: 14px">
-                <span class="author">усил</span>
-                <div class="bottom">
-                  <external-tag
-                    text="Github"
-                    link="http://github.com/Haohao-555"
-                  />
-                  <external-tag
-                    text="CSDN"
-                    link="https://blog.csdn.net/weixin_44659458"
-                  />
-                  <external-tag
-                    text="掘金"
-                    link="https://juejin.cn/user/1258302989143437"
-                  />
-                </div>
-              </div>
-            </div>
-          </el-card>
+        <el-col :md="4" :lg="4" :xs="24" :sm="24">
+          <author-card v-if="!$store.getters.isMobile" />
         </el-col>
       </el-row>
-      <el-row :gutter="10" class="echart-session">
+      <el-row :gutter="10">
+        <el-col :md="18" :lg="18" :xs="24" :sm="24">
+          <project-card />
+        </el-col>
+        <el-col :md="6" :lg="6" :xs="24" :sm="24">
+          <time-card />
+        </el-col>
         <el-col :md="16" :lg="16" :xs="24" :sm="24">
-          <el-card>
-            <div ref="area_echartsRef" class="chart"></div>
-          </el-card>
+          <visit-charts />
         </el-col>
         <el-col :md="8" :lg="8" :xs="24" :sm="24">
-          <el-card>
-            <div ref="nightingale_echartRef" class="chart"></div>
-          </el-card>
+          <date-charts />
         </el-col>
       </el-row>
-      <el-row :gutter="10" class="time-session"></el-row>
     </div>
     <el-drawer
       v-model="drawer.enable"
@@ -141,23 +70,18 @@
   </div>
 </template>
 <script setup>
-import { onMounted, ref, reactive } from 'vue'
+import { reactive } from 'vue'
 import { useStore } from 'vuex'
-import * as echarts from 'echarts'
-import { useEcharts } from '@/hook/useEcharts'
 import { useI18n } from 'vue-i18n'
-import externalTag from '@/components/externalTag'
-import {
-  area_echart_option,
-  nightingale_echart_option
-} from './data/echarts_Data.js'
+import authorCard from './component/authorCard'
+import dataCharts from './component/dataCharts'
+import projectCard from './component/projectCard'
+import visitCharts from './component/visitCharts'
+import dateCharts from './component/dateCharts'
+import timeCard from './component/timeCard'
 
 const store = useStore()
 const i18n = useI18n()
-
-const tab_active = ref('first')
-const area_echartsRef = ref(null)
-const nightingale_echartRef = ref(null)
 
 const userInfo = store.getters.userInfo
 
@@ -167,18 +91,13 @@ const drawer = reactive({
   data: {}
 })
 
-onMounted(() => {
-  const area_charts = echarts.init(area_echartsRef.value)
-  const nightingale_echart = echarts.init(nightingale_echartRef.value)
-  useEcharts(area_charts, area_echart_option)
-  useEcharts(nightingale_echart, nightingale_echart_option)
-})
-
-const onSelect = (data) => {
+const onSelect = () => {
   drawer.enable = true
   drawer.title = i18n.t('msg.userManage.drawer_title')
   drawer.data = userInfo
 }
+
+const onchange = () => {}
 </script>
 <style lang="scss" scoped>
 @import '~@/styles/variables.scss';
@@ -187,60 +106,33 @@ const onSelect = (data) => {
     min-width: 800px;
 
     .private-session {
-      .info-container {
+      .private-container {
         display: flex;
-        justify-content: space-between;
-        .private-info {
-          padding-left: 10px;
-          padding-top: 4px;
-          box-sizing: border-box;
-          flex: 1;
-          .account {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bolder;
-            line-height: 30px;
-            font-size: 20px;
-            span:hover {
-              color: var(--el-color-primary);
-              cursor: pointer;
+        flex-direction: column;
+        .info-container {
+          display: flex;
+          justify-content: space-between;
+          .private-info {
+            padding-left: 10px;
+            padding-top: 4px;
+            box-sizing: border-box;
+            flex: 1;
+            .account {
+              display: flex;
+              justify-content: space-between;
+              font-weight: bolder;
+              line-height: 30px;
+              font-size: 20px;
+              span:hover {
+                color: var(--el-color-primary);
+                cursor: pointer;
+              }
+            }
+            .intriduce {
+              line-height: 30px;
             }
           }
-          .intriduce {
-            line-height: 30px;
-          }
         }
-      }
-
-      .tabs-container {
-        .tabs-item {
-          height: 146px;
-        }
-      }
-      .author-container {
-        // padding-bottom: 25px;
-        .author {
-          font-size: 20px;
-          &:hover {
-            color: var(--el-color-primary);
-            cursor: pointer;
-          }
-        }
-        .bottom {
-          padding-top: 12px;
-          display: flex;
-        }
-
-        .image {
-          width: 100%;
-          display: block;
-        }
-      }
-    }
-
-    .echart-session {
-      .chart {
-        height: 400px;
       }
     }
   }
