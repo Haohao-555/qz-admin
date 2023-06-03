@@ -47,7 +47,14 @@ export default {
     email: 'Email',
     state: 'State',
     updateAtFormat: 'UpdateTime',
-    action: 'Action'
+    action: 'Action',
+    drawer_title: 'Detailed Information',
+    dialog_title: 'Update Information',
+    update: 'Update',
+    reset: 'Reset'
+  },
+  private: {
+    seeInfo: 'See All'
   },
   auth: {
     btn: 'Button Auth Manage',

@@ -6,7 +6,14 @@ html.dark {
 
 	--qz-admin-aside-border-color: rgb(65, 66, 67);
 	--qz-admin-app-main-bg-color: #141414;
-	--el-color-success: var(--el-color-primary)
+
+	.jv-container {
+		background-color: #141414;
+
+		.jv-key {
+			color: #fff;
+		}
+	}
 }
 
 html.light {

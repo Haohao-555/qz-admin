@@ -4,8 +4,11 @@ import store from './store'
 import router from './router'
 import i18n from '@/i18n'
 import installElementPlus from './plugins/element'
+import JsonViewer from 'vue-json-viewer'
+
 // 初始化样式表
 import '@/styles/index.scss'
+import 'element-plus/theme-chalk/display.css'
 // 暗黑模式
 import 'element-plus/theme-chalk/dark/css-vars.css'
 // 自定义暗黑模式
@@ -24,4 +27,4 @@ installElementPlus(app)
 installIcons(app)
 installFilter(app)
 installDirective(app)
-app.use(store).use(router).use(i18n).mount('#app')
+app.use(store).use(router).use(i18n).use(JsonViewer).mount('#app')

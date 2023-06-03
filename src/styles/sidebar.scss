@@ -73,7 +73,6 @@
     .el-sub-menu__title {
       padding: 0 !important;
       position: relative;
-      justify-content: center;
 
       .el-tooltip {
         padding: 0 !important;
@@ -88,11 +87,10 @@
       }
     }
 
-    .el-submenu {
+    .el-sub-menu {
       overflow: hidden;
-
+      padding-left: 20px;
       &>.el-submenu__title {
-        padding: 0 !important;
 
         .svg-icon {
           margin-left: 20px;

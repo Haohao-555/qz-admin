@@ -126,16 +126,69 @@
           />
         </div>
       </el-card>
+      <el-drawer
+        v-model="drawer.enable"
+        direction="rtl"
+        :title="drawer.title"
+        :size="$store.getters.isMobile ? '50%' : '20%'"
+      >
+        <el-avatar :size="80" :src="drawer.data.avatar">
+          <img
+            src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
+          />
+        </el-avatar>
+        <h2 style="padding: 12px 0">{{ drawer.data.nickName }}</h2>
+        <div>
+          <json-viewer :value="drawer.data"></json-viewer>
+        </div>
+      </el-drawer>
+      <el-dialog
+        v-model="dialog.enable"
+        :title="dialog.title"
+        :width="$store.getters.isMobile ? '100%' : '50%'"
+      >
+        <el-form :model="dialog.data" label-width="80px">
+          <el-form-item :label="$t('msg.userManage.nickname')">
+            <el-input v-model="dialog.form.nickName" />
+          </el-form-item>
+          <el-form-item :label="$t('msg.userManage.age')">
+            <el-input v-model.number="dialog.form.age" />
+          </el-form-item>
+          <el-form-item :label="$t('msg.userManage.email')">
+            <el-input v-model="dialog.form.email" />
+          </el-form-item>
+          <el-form-item :label="$t('msg.userManage.intriduce')">
+            <el-input v-model="dialog.form.intriduce" type="textarea" />
+          </el-form-item>
+          <el-button type="primary" @click="onUpdate">
+            {{ $t('msg.userManage.update') }}
+          </el-button>
+        </el-form>
+      </el-dialog>
     </div>
   </div>
 </template>
 <script setup>
 import { reactive, onMounted, onActivated } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Delete, Edit, View, Clock } from '@element-plus/icons-vue'
 import { getUserList } from '@/api/user'
 import { ElMessage } from 'element-plus'
 import { tableColumns } from './dynamic'
 
+const i18n = useI18n()
+
+const dialog = reactive({
+  enable: false,
+  title: '',
+  data: {},
+  form: {}
+})
+const drawer = reactive({
+  enable: false,
+  title: '',
+  data: {}
+})
 const searchform = reactive({
   account: '',
   nickname: '',
@@ -150,6 +203,7 @@ const listInfo = reactive({
   list: [],
   where: {}
 })
+
 const getList = () => {
   getUserList({
     pageSize: listInfo.pageSize,
@@ -175,10 +229,39 @@ const handleCurrentChange = (currentPage) => {
   getList()
 }
 
-const onSelect = (data) => {}
-const onEdit = (data) => {}
+const onSelect = (data) => {
+  drawer.enable = true
+  drawer.title = i18n.t('msg.userManage.drawer_title')
+  drawer.data = data
+}
+const onEdit = (data) => {
+  dialog.enable = true
+  dialog.title = i18n.t('msg.userManage.dialog_title')
+  dialog.data = data
+  dialog.form = data
+}
 const onDelect = (data) => {}
 
+const onUpdate = () => {
+  // const nickName = dialog.form.nickName ? dialog.form.nickName : dialog.data.nickName
+  // const age = dialog.form.age ? dialog.form.age : dialog.data.age
+  // const email = dialog.form.nickName ? dialog.form.nickName : dialog.data.nickName
+  // const intriduce = dialog.form.nickName ? dialog.form.nickName : dialog.data.nickName
+  // updateUser({
+  //   where: {
+  //     id: dialog.data.id
+  //   },
+  //   data: Object.assign(dialog.data, { nickName, age, email, intriduce })
+  // }).then(res => {
+  //   if (res.errorno === '0') {
+  //     ElMessage.success(res.message)
+  //     dialog.enable = false
+  //     getList()
+  //   } else {
+  //     ElMessage.error(res.message)
+  //   }
+  // })
+}
 // 搜索
 const onSearch = () => {
   const searchWhere = {}
@@ -239,6 +322,13 @@ onActivated(() => getList())
         width: max-content;
         margin: auto;
       }
+    }
+  }
+  ::v-deep .el-drawer {
+    .el-drawer__body {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }

@@ -47,7 +47,14 @@ export default {
     email: '邮箱',
     state: '状态',
     updateAtFormat: '更新时间',
-    action: '操作'
+    action: '操作',
+    drawer_title: '详细信息',
+    dialog_title: '修改其他人信息',
+    update: '更新',
+    reset: '重置'
+  },
+  private: {
+    seeInfo: '查看个人信息'
   },
   auth: {
     btn: '按钮级别的权限管理',
