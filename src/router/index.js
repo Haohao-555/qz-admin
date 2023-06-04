@@ -174,6 +174,14 @@ export const publicRoutes = [
         path: '/404',
         name: '404',
         component: () => import('@/views/Error/404')
+      },
+      {
+        path: '/usermessage',
+        name: 'userMessage',
+        component: () => import('@/views/Usermessage/index'),
+        meta: {
+          title: 'userMessage'
+        }
       }
     ]
   }

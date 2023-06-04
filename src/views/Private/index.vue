@@ -73,6 +73,7 @@
 import { reactive } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import authorCard from './component/authorCard'
 import dataCharts from './component/dataCharts'
 import projectCard from './component/projectCard'
@@ -82,6 +83,7 @@ import timeCard from './component/timeCard'
 
 const store = useStore()
 const i18n = useI18n()
+const router = useRouter()
 
 const userInfo = store.getters.userInfo
 
@@ -97,7 +99,9 @@ const onSelect = () => {
   drawer.data = userInfo
 }
 
-const onchange = () => {}
+const onchange = () => {
+  router.push('/usermessage')
+}
 </script>
 <style lang="scss" scoped>
 @import '~@/styles/variables.scss';

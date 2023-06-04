@@ -19,7 +19,8 @@ export default {
     dom: 'Autb-button',
     user: 'User',
     userManage: 'User-manage',
-    roleManage: 'Role-manage'
+    roleManage: 'Role-manage',
+    userMessage: 'User-message'
   },
   login: {
     loginBtn: 'Login',
@@ -36,7 +37,7 @@ export default {
   userManage: {
     account: 'Account',
     role: 'Role',
-    nickname: 'Name',
+    nickname: 'Nickname',
     age: 'Age',
     city: 'City',
     gender: 'Gender',
@@ -52,6 +53,9 @@ export default {
     dialog_title: 'Update Information',
     update: 'Update',
     reset: 'Reset'
+  },
+  userMessage: {
+    uploadAva: 'Upload avatar'
   },
   private: {
     seeInfo: 'See All',

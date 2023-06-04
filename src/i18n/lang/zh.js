@@ -19,7 +19,8 @@ export default {
     dom: '按钮权限',
     user: '用户',
     userManage: '用户管理',
-    roleManage: '角色管理'
+    roleManage: '角色管理',
+    userMessage: '用户信息'
   },
   login: {
     loginBtn: '登录',
@@ -36,7 +37,7 @@ export default {
   userManage: {
     account: '账号',
     role: '身份',
-    nickname: '姓名',
+    nickname: '昵称',
     age: '年龄',
     city: '城市',
     gender: '性别',
@@ -52,6 +53,9 @@ export default {
     dialog_title: '修改其他人信息',
     update: '更新',
     reset: '重置'
+  },
+  userMessage: {
+    uploadAva: '上传头像'
   },
   private: {
     seeInfo: '查看',

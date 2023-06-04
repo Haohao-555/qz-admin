@@ -5,7 +5,7 @@
         <!-- 不可点击 -->
         <span class="no-redirect" v-if="i == breadcrumData.length - 1">
           <span style="margin-top: -3px">
-            <svg-icon :icon="item.meta.icon" />
+            <svg-icon :icon="item.meta.icon || 'tool'" />
           </span>
           <span class="title">{{ $t(`msg.route.${item.meta.title}`) }}</span>
         </span>
