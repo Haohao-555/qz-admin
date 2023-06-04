@@ -20,7 +20,8 @@ export default {
     user: 'User',
     userManage: 'User-manage',
     roleManage: 'Role-manage',
-    userMessage: 'User-message'
+    userMessage: 'User-message',
+    excel: 'Excel'
   },
   login: {
     loginBtn: 'Login',
@@ -109,5 +110,15 @@ export default {
   theme: {
     themeColorChange: 'Theme Color Change',
     themeChange: 'Theme Change'
+  },
+  uploadExcel: {
+    upload: 'Click upload',
+    drop: 'Drag files here'
+  },
+  excel: {
+    importExcel: 'Excel import',
+    exportExcel: 'Excel export',
+    importSuccess: 'Excel importSuccess',
+    exportSuccess: 'Excel exportSuccess'
   }
 }

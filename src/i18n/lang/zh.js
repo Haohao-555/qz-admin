@@ -20,7 +20,8 @@ export default {
     user: '用户',
     userManage: '用户管理',
     roleManage: '角色管理',
-    userMessage: '用户信息'
+    userMessage: '用户信息',
+    excel: '数据图表'
   },
   login: {
     loginBtn: '登录',
@@ -109,5 +110,15 @@ export default {
   theme: {
     themeColorChange: '主题色更换',
     themeChange: '主题更换'
+  },
+  uploadExcel: {
+    upload: '点击上传',
+    drop: '将文件拖到此处'
+  },
+  excel: {
+    importExcel: 'excel 导入',
+    exportExcel: 'excel 导出',
+    importSuccess: 'excel 导入成功',
+    exportSuccess: 'excel 导出成功'
   }
 }

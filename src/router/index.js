@@ -121,12 +121,21 @@ export const publicRoutes = [
             }
           },
           {
+            path: '/component/excel',
+            name: 'excel',
+            component: () => import('@/views/Component-excel/index'),
+            meta: {
+              title: 'excel',
+              icon: 'excel'
+            }
+          },
+          {
             path: '/component/editor',
             name: 'editor',
             component: () => import('@/views/Component-editor/index'),
             meta: {
               title: 'editor',
-              icon: 'component-item'
+              icon: 'editor'
             }
           },
           {
@@ -135,7 +144,7 @@ export const publicRoutes = [
             component: () => import('@/views/Component-markdown/index'),
             meta: {
               title: 'markDown',
-              icon: 'component-item'
+              icon: 'markdown'
             }
           }
           // ! /component 路径下的子路径在这里加
