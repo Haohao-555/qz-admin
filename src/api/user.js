@@ -7,7 +7,7 @@ const LOGOUT_API = '/user/logout'
 // 是否已登录
 const ISLOGIN_API = '/user/isLogin'
 // 获取用户列表
-const GETUSERLIST_API = '/user/list'
+const GETUSERLIST_API = '/admin/list'
 // 更新用户信息
 const UPDATEUSER_API = '/user/updatePrivateInfo'
 export const login = data => {
