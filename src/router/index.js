@@ -112,6 +112,15 @@ export const publicRoutes = [
         },
         children: [
           {
+            path: '/component/drop',
+            name: 'drop',
+            component: () => import('@/views/Component-drop/index'),
+            meta: {
+              title: 'drop',
+              icon: 'drop'
+            }
+          },
+          {
             path: '/component/icon',
             name: 'icon',
             component: () => import('@/views/Component-icon/index'),

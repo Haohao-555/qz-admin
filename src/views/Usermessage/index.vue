@@ -45,8 +45,8 @@
         }}</el-tag>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">保存</el-button>
-        <el-button @click="onEdit">编辑</el-button>
+        <el-button type="primary" @click="onSubmit">{{ $t('msg.userMessage.save') }}</el-button>
+        <el-button @click="onEdit">{{ $t('msg.userMessage.edit') }}</el-button>
       </el-form-item>
     </el-form>
   </div>

@@ -8,7 +8,6 @@ import JsonViewer from 'vue-json-viewer'
 
 // 初始化样式表
 import '@/styles/index.scss'
-import 'element-plus/theme-chalk/display.css'
 // 暗黑模式
 import 'element-plus/theme-chalk/dark/css-vars.css'
 // 自定义暗黑模式
@@ -21,10 +20,11 @@ import installDirective from '@/directives'
 import installFilter from '@/filters'
 // 导入路由鉴权
 import './permission'
+import VueGridLayout from 'vue-grid-layout'
 
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)
 installFilter(app)
 installDirective(app)
-app.use(store).use(router).use(i18n).use(JsonViewer).mount('#app')
+app.use(store).use(router).use(i18n).use(JsonViewer).use(VueGridLayout).mount('#app')

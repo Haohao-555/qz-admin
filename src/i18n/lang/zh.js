@@ -21,7 +21,8 @@ export default {
     userManage: '用户管理',
     roleManage: '角色管理',
     userMessage: '用户信息',
-    excel: '数据图表'
+    excel: '数据图表',
+    drop: '拖拽'
   },
   login: {
     loginBtn: '登录',
@@ -56,7 +57,9 @@ export default {
     reset: '重置'
   },
   userMessage: {
-    uploadAva: '上传头像'
+    uploadAva: '上传头像',
+    save: '保存',
+    edit: '编辑'
   },
   private: {
     seeInfo: '查看',

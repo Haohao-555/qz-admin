@@ -21,7 +21,8 @@ export default {
     userManage: 'User-manage',
     roleManage: 'Role-manage',
     userMessage: 'User-message',
-    excel: 'Excel'
+    excel: 'Excel',
+    drop: 'Drop'
   },
   login: {
     loginBtn: 'Login',
@@ -56,7 +57,9 @@ export default {
     reset: 'Reset'
   },
   userMessage: {
-    uploadAva: 'Upload avatar'
+    uploadAva: 'Upload avatar',
+    save: 'Save',
+    edit: 'Edit'
   },
   private: {
     seeInfo: 'See All',
