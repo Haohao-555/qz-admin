@@ -37,7 +37,7 @@ export const useTheme = () => {
     store.commit('theme/triggerDark')
     initDark()
     // !确保暗黑模式下主题色被修改
-    changePrimary()
+    changePrimary(store.gettersw.mainColor)
   }
 
   const changePrimary = (primaryColor) => {
