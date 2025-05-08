@@ -23,6 +23,11 @@ export const publicRoutes = [
     ]
   },
   {
+    path: '/project',
+    name: 'project',
+    component: () => import('@/views/ProjectPage/index')
+  },
+  {
     path: '/blog',
     name: 'blog',
     component: blogLayout,

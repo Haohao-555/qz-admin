@@ -152,9 +152,9 @@ const loadNode = async (node, resolve) => {
 const showObjdialog = () => {
   visible.value = true
   nextTick(() => {
-    handleClear()
     isSearchState.value = false
     searchKey.value = ''
+    handleClear()
     nextTick(() => {
       treeRef.value.setCheckedKeys(props.modelValue)
       nextTick(() => handleAdd())
@@ -172,7 +172,6 @@ const handleAdd = () => {
 }
 const handleDel = () => {
   if (cancelCheckList.value.length !== 0) {
-    console.log(cancelCheckList.value)
     Array.from(cancelCheckList.value).forEach((key) => {
       treeRef.value.setChecked(key, false)
     })

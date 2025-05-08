@@ -19,6 +19,7 @@
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.7",
     "echarts": "^5.4.1",
+    "electron": "^34.3.0",
     "element-plus": "^2.9.3",
     "exceljs": "^4.4.0",
     "file-saver": "^2.0.5",

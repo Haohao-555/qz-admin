@@ -94,7 +94,6 @@ const setChecked = (key, state) => {
   if (!state && isInclude) {
     const index = checkList.value.findIndex(item => item === key)
     checkList.value.splice(index, 1)
-    console.log(checkList.value)
   }
 }
 
